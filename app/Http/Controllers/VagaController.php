@@ -105,9 +105,11 @@ class VagaController extends Controller
     }
 
     public function show($id)
-    {
+    {        
         $editais = Vaga::findOrFail($id);
-        return view('editaiss.show', compact('editais'));
+        $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
+
+        return view('paginas.site.show', compact('editais','userInscriptions'));
     }
     
 }

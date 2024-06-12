@@ -10,7 +10,7 @@
         <!-- ============================================================== -->
         <div class="navbar-brand">
             <!-- Logo icon -->
-            <a href="index.html">
+            <a href="{{ asset('/') }}">
                 <b class="logo-icon">
                     <!-- Dark Logo icon -->
                     <img src="https://www3.seduc.mt.gov.br/image/layout_set_logo?img_id=8125250&t=1718007197077" width="200px" class="dark-logo" />
@@ -149,11 +149,17 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <img src="../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
-                        width="40">
-                    <span class="ml-2 d-none d-lg-inline-block"><span>Olá,</span> <span
-                            class="text-dark">{{ Auth::user()->name }}</span> <i data-feather="chevron-down"
-                            class="svg-icon"></i></span>
+                    <img src="{{ asset('/assets/images/users/logo.png') }}" alt="user" class="rounded-circle"
+                        width="60">
+                        <span class="ml-2 d-none d-lg-inline-block">
+                            <span>Olá,</span>
+                            @auth
+                                <span class="text-dark">{{ Auth::user()->name }}</span>
+                            @else
+                                <span class="text-dark">Convidado</span>
+                            @endauth
+                            <i data-feather="chevron-down" class="svg-icon"></i>
+                        </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                     <a class="dropdown-item" href="{{ asset('/perfil') }}"><i data-feather="user"

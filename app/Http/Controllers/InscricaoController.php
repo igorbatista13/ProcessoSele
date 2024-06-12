@@ -14,7 +14,7 @@ class InscricaoController extends Controller
     //
     public function index() {
         
-        $inscricao = Inscricao::with(['user', 'vaga'])->get();
+        $inscricao = Inscricao::get();
 
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
@@ -31,7 +31,8 @@ class InscricaoController extends Controller
 
      //   Mail::to(Auth::user()->email)->send(new \App\Mail\InscricaoRealizada($vaga));
 
-        return redirect()->route('vagas.index');    
+        // return redirect()->route('vagas.index');    
+        return back();
     }
 
 
@@ -43,6 +44,6 @@ class InscricaoController extends Controller
 
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
-        return view('paginas.inscricao.minhasInscricoes',compact('inscricao'));
+        return view('paginas.inscricao.minhasInscricoes',compact('inscricao','userInscriptions'));
     }
 }

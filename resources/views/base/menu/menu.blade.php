@@ -4,13 +4,13 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/') }}"
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/painel') }}"
                         aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                             class="hide-menu">Painel</span></a></li>
                 <li class="list-divider"></li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ asset('/editais') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ asset('/') }}" aria-expanded="false">
                         <i data-feather="tag" class="feather-icon"></i>
                         <span class="hide-menu">Editais
                         </span>
