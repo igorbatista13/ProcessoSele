@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Vaga;
 use App\Models\Inscricao;
 use App\Models\formulario;
+use App\Models\Questao;
+use App\Models\QuestaoPagina1;
+
+use App\Models\RespostaPagina1;
+use App\Models\RespostaPagina2;
+use App\Models\RespostaPagina3;
+use App\Models\RespostaPagina4;
+use App\Models\RespostaPagina5;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -21,17 +29,26 @@ class EditalController extends Controller
 
     }
    
-    public function formulario() {
+    public function formulario($id) {
 
-        return view('paginas.formulario.index');
+        $questoesPagina1 = QuestaoPagina1::all();
+        $questoesPagina2 = QuestaoPagina2::all();
+        $questoesPagina3 = QuestaoPagina3::all();
+        $questoesPagina4 = QuestaoPagina4::all();
+        $questoesPagina5 = QuestaoPagina5::all();
+
+        return view('formulario.formulario', compact('id', 'questoesPagina1', 'questoesPagina2', 'questoesPagina3', 'questoesPagina4', 'questoesPagina5'));
+    
+   //     return view('paginas.formulario.index');
     }
 
     public function create($id)
     {
         $vaga = Vaga::findOrFail($id);
+        $questoes = Questao::all();
 
         $editalId = $id;
-        return view('paginas.formulario.index', compact('editalId','vaga'));
+        return view('paginas.formulario.index', compact('editalId','vaga','questoes'));
     }
 
 

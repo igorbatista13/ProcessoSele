@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Inscricao;
 use App\Models\Vaga;
 use App\Models\Formulario;
+use App\Models\Resposta;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -51,7 +52,17 @@ class InscricaoController extends Controller
         $inscricao->motivo = ''; // Defina um valor padrão ou remova se não for necessário
         $inscricao->status = 'pendente';
         $inscricao->save();
-
+     
+        foreach ($request->except(['nome', 'cpf', 'motivo', '_token']) as $key => $value) {
+            if (strpos($key, 'questao_') === 0) {
+                $questaoId = substr($key, 8);
+                Resposta::create([
+                    'inscricaos_id' => $inscricao->id,
+                    'questoes_id' => $questaoId,
+                    'resposta' => $value,
+                ]);
+            }
+        }
         // Enviar email de confirmação (opcional)
         Mail::to(Auth::user()->email)->send(new \App\Mail\InscricaoRealizada($inscricao));
         //Mail::to($user->email)->send(new WelcomeMail($user));

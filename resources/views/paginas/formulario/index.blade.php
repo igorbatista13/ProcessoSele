@@ -85,16 +85,18 @@
                     </div>
                     <!-- Adicione mais campos conforme necessário -->
                     <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
+               
+                    @foreach($questoes as $questao)
+                    <div class="form-group">
+                        <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
+                        <textarea name="questao_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
+                    </div>
+                    @endforeach
                 </form>
             </div>
         </div>
 
-        <div class="aiia-wizard-step">
-            <h1>Not a carousel</h1>
-            <div class="step-content">
-                You can also compare this plugin to a carousel, but then again it is not a carousel. Well, maybe I'll update the plugin so that it will have different modes (tabs, slider, carousel...). But right now it serves for one purpose only and that is creating a Wizard with steps, plain and simple. The aiiaPlugin may as well be a hybrid between the Tabs Twitter Bootstrap and the carousel plugin if you like.
-            </div>
-        </div>
+
 
         <div class="aiia-wizard-step">
             <h1>Methods</h1>

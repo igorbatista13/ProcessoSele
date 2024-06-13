@@ -10,6 +10,7 @@ use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\CurriculoController;
 use App\Http\Controllers\PainelController;
 use App\Http\Controllers\EditalController;
+use App\Http\Controllers\QuestaoController;
 
 
 Route::middleware(['auth'])->group(function () {
@@ -25,10 +26,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('minhas-inscricoes');
 
     //PERFIL
- //   Route::resource('perfil', PerfilController::class)->only(['index', 'update', 'edit']);
-      
-      Route::get('/perfil', [PerfilController::class, 'index'])->name('profile.index');
-      Route::put('perfil/update', [PerfilController::class, 'update'])->name('perfil.update'); 
+    //   Route::resource('perfil', PerfilController::class)->only(['index', 'update', 'edit']);
+
+    Route::get('/perfil', [PerfilController::class, 'index'])->name('profile.index');
+    Route::put('perfil/update', [PerfilController::class, 'update'])->name('perfil.update');
     // PAINEL DE CONTROLE DASHBOARD
     Route::resource('/painel', PainelController::class)->only(['index', 'update']);
 
@@ -36,6 +37,17 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('documentos', DocumentoController::class)->only(['store']);
     // Curriculo
     Route::resource('curriculos', CurriculoController::class)->only(['store']);
+
+    // QUESTOES
+    Route::prefix('questoes')->group(function () {
+        Route::post('/{pagina}', [QuestaoController::class, 'store'])->name('paginas.questoes.store');
+        Route::get('/{pagina}/{id}/edit', [QuestaoController::class, 'edit'])->name('paginas.questoes.edit');
+        Route::put('/{pagina}/{questao}', [QuestaoController::class, 'update'])->name('paginas.questoes.update');
+        Route::delete('/{pagina}/{questao}', [QuestaoController::class, 'destroy'])->name('paginas.questoes.destroy');
+    });
+    Route::get('questoes/{pagina}', [QuestaoController::class, 'index'])->name('questoes.index');
+    Route::get('questoes/create', [QuestaoController::class, 'create'])->name('questoes.create');
+
 });
 
 
