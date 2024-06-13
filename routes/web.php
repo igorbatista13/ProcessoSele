@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inscricoes/{id}', [InscricaoController::class, 'show'])->name('inscricao.show');
     Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('inscricao.minhasInscricoes');
     Route::post('inscricoes/{vaga}', [InscricaoController::class, 'store'])->name('inscricoes.store');
+    Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('minhas-inscricoes');
 
     //PERFIL
  //   Route::resource('perfil', PerfilController::class)->only(['index', 'update', 'edit']);
@@ -47,5 +48,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::resource('editais', VagaController::class)->only(['index', 'show']);
 Route::resource('/', EditalController::class)->only(['index', 'show']);
+
+//Route::get('/formulario', [EditalController::class, 'formulario'])->name('editais.formulario');
+
+Route::get('inscricao/form/{id}', [EditalController::class, 'create'])->name('inscricao.form');
+Route::post('inscricao/store/{id}', [EditalController::class, 'store'])->name('inscricao.store');
 
 require __DIR__ . '/auth.php';

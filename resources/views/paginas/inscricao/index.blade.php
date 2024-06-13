@@ -21,7 +21,7 @@
                                 <div class="col-md-6 col-lg-3 col-xlg-3">
                                     <div class="card card-hover">
                                         <div class="p-2 bg-primary text-center">
-                                            <h1 class="font-light text-white">2,064</h1>
+                                            <h1 class="font-light text-white">{{$countInscricao}}</h1>
                                             <h6 class="text-white">Total de Inscritos</h6>
                                         </div>
                                     </div>
@@ -30,7 +30,7 @@
                                 <div class="col-md-6 col-lg-3 col-xlg-3">
                                     <div class="card card-hover">
                                         <div class="p-2 bg-warning text-center">
-                                            <h1 class="font-light text-white">1,738</h1>
+                                            <h1 class="font-light text-white">{{$countInscricaoPendente}}</h1>
                                             <h6 class="text-white">Total de Pendentes</h6>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@
                                 <div class="col-md-6 col-lg-3 col-xlg-3">
                                     <div class="card card-hover">
                                         <div class="p-2 bg-success text-center">
-                                            <h1 class="font-light text-white">1100</h1>
+                                            <h1 class="font-light text-white">{{$countInscricaoAprovadas}}</h1>
                                             <h6 class="text-white">Total de Selecionados</h6>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@
                                 <div class="col-md-6 col-lg-3 col-xlg-3">
                                     <div class="card card-hover">
                                         <div class="p-2 bg-danger text-center">
-                                            <h1 class="font-light text-white">964</h1>
+                                            <h1 class="font-light text-white">{{$countInscricaoNaoAprovadas}}</h1>
                                             <h6 class="text-white">Total de não Selecionados</h6>
                                         </div>
                                     </div>

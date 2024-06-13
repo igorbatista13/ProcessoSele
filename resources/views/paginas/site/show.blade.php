@@ -11,6 +11,8 @@
                             <div class="card-body">
                                 <h4 class="card-title">Informações sobre o Edital</h4>
                                 <hr>
+             
+
                                 </p>
                                 <div class="p-4 border shadow-sm rounded">
                                     <h4 class="card-title">{{ $editais->titulo }} - <b> {{ $editais->ano }} </b></h4>
@@ -69,14 +71,14 @@
                                                         implemented template</span>
                                                 </li>
                                                 @if (!in_array($editais->id, $userInscriptions))
-                                                    <form action="{{ route('inscricao.store', $editais->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-primary">Inscrever-se</button>
-                                                    </form>
-                                                @else
-                                                    <span class="text-success">Já inscrito</span>
-                                                @endif
+                                                <form action="{{ route('inscricao.form', $editais->id) }}" method="GET">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary">Inscrever-se</button>
+                                                </form>
+                                            @else
+                                                <span class="text-success">Já inscrito</span>
+                                            @endif
+                                            
                                             </ul>
                                         </div>
                                     </div>

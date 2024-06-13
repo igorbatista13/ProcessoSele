@@ -10,15 +10,15 @@
                         <div class="card-body collapse show">
                             <h4 class="card-title">Editais abertos</h4>
                             <p class="card-text">Confira aqui os Editais abertos</p>
+                            <a href="{{ '/editais/create' }}">
+                                <button class="btn btn-primary">Novo</button>
+                            </a>
                         </div>
                     </div>
+
                 </div>
             </div>
-            <!-- End Row -->
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
-            <!-- Row -->
+
             <div class="row">
                 <div class="col-12">
                     <!-- Row -->
