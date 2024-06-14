@@ -36,6 +36,29 @@
         
                 </ul>
             </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                    aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                        class="hide-menu">Questões do Formulário </span></a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a href="{{ asset('/questoes/1') }}" class="sidebar-link"><span
+                                class="hide-menu"> Questões da página 1
+                            </span></a>
+                    </li>
+                    <li class="sidebar-item"><a href="{{ asset('/questoes/2') }}" class="sidebar-link">
+                        <span class="hide-menu"> Questões da página 2 </span></a>
+                    </li>
+                    <li class="sidebar-item"><a href="{{ asset('/questoes/2') }}" class="sidebar-link">
+                        <span class="hide-menu"> Questões da página 3 </span></a>
+                    </li>
+                    <li class="sidebar-item"><a href="{{ asset('/questoes/2') }}" class="sidebar-link">
+                        <span class="hide-menu"> Questões da página 4 </span></a>
+                    </li>
+                    <li class="sidebar-item"><a href="{{ asset('/questoes/2') }}" class="sidebar-link">
+                        <span class="hide-menu"> Questões da página 5 </span></a>
+                    </li>
+        
+                </ul>
+            </li>
 
 
 

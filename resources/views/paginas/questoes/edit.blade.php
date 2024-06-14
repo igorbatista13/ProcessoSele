@@ -5,7 +5,8 @@
 <div class="page-wrapper">
     <div class="container-fluid">
             <h1>Editar Questão</h1>
-    <form action="{{ route('questoes.update', $questao->id) }}" method="POST">
+            <form action="{{ route('paginas.questoes.update', ['pagina' => $pagina, 'id' => $questao->id]) }}" method="POST">
+
         @csrf
         @method('PUT')
         <div class="form-group">

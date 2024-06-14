@@ -40,14 +40,16 @@ Route::middleware(['auth'])->group(function () {
 
     // QUESTOES
     Route::prefix('questoes')->group(function () {
+        Route::get('/{pagina}', [QuestaoController::class, 'index'])->name('paginas.questoes.index');
+        Route::get('/{pagina}/create', [QuestaoController::class, 'create'])->name('paginas.questoes.create');
         Route::post('/{pagina}', [QuestaoController::class, 'store'])->name('paginas.questoes.store');
         Route::get('/{pagina}/{id}/edit', [QuestaoController::class, 'edit'])->name('paginas.questoes.edit');
-        Route::put('/{pagina}/{questao}', [QuestaoController::class, 'update'])->name('paginas.questoes.update');
+        Route::put('/{pagina}/{id}', [QuestaoController::class, 'update'])->name('paginas.questoes.update');
         Route::delete('/{pagina}/{questao}', [QuestaoController::class, 'destroy'])->name('paginas.questoes.destroy');
     });
-    Route::get('questoes/{pagina}', [QuestaoController::class, 'index'])->name('questoes.index');
+  //  Route::get('questoes/{pagina}', [QuestaoController::class, 'index'])->name('questoes.index');
     Route::get('questoes/create', [QuestaoController::class, 'create'])->name('questoes.create');
-
+    Route::post('questoes', [QuestaoController::class, 'store'])->name('questoes.store');
 });
 
 

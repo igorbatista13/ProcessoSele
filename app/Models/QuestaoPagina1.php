@@ -10,9 +10,13 @@ class QuestaoPagina1 extends Model
     use HasFactory;
 
     protected $table = 'questoes_pagina1';
-
-    public function questaoable()
-    {
-        return $this->morphOne('App\Models\Questao', 'questaoable');
-    }
+    protected $fillable = [
+        'titulo',
+    //    'descricao',
+        // Adicione outros campos que possam ser preenchidos
+    ];
+    // public function questaoable()
+    // {
+    //     return $this->morphOne('App\Models\Questao', 'questaoable');
+    // }
 }

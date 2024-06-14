@@ -9,30 +9,18 @@
 
                 <div class="card">
                     <div class="card-body collapse show">
-                        <h4 class="card-title">Perfil</h4>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional
-                            content.</p>
+                        <h4 class="card-title">Questões da Página {{$pagina}}</h4>
+                        <p class="card-text">Crie as questões para a página <b>{{$pagina}}  </b> do formulario.</p>
+                            <a href="{{ route('paginas.questoes.create', ['pagina' => $pagina]) }}" class="btn btn-primary">Criar Nova Questão</a>
+
                     </div>
                 </div>
             </div>
         </div>
 
 
-
-
-    <h1>Questões</h1>
-    {{-- <a href="{{ route('questoes.create') }}" class="btn btn-primary">Adicionar Questão</a> --}}
-    <a href="{{ route('questoes.create') }}" class="btn btn-primary">Criar Nova Questão</a>
-
     <table class="table mt-3">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Descrição</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
+
         <tbody>
             @foreach ($questoes as $questao)
             <div class="card mb-3">

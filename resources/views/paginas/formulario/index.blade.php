@@ -69,7 +69,7 @@
         </div>
 
         <div class="aiia-wizard-step">
-            <h1>Informações Pessoais</h1>
+            <h1>Informações Pessoais (Página 1)</h1>
             <div class="step-content">
                
                     <form action="{{ route('inscricoes.store', $vaga->id) }}" method="POST" enctype="multipart/form-data">
@@ -84,70 +84,75 @@
                         <input type="text" class="form-control" id="cpf" name="cpf" required>
                     </div>
                     <!-- Adicione mais campos conforme necessário -->
-                    <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
                
-                    @foreach($questoes as $questao)
+                    @foreach($questoesPagina1 as $questao)
                     <div class="form-group">
                         <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
                         <textarea name="questao_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
                     </div>
                     @endforeach
+                    <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
                 </form>
+
             </div>
         </div>
 
 
 
         <div class="aiia-wizard-step">
-            <h1>Methods</h1>
+            <h1>Pagina 2</h1>
             <div class="step-content">
-                This plugin allows you to interract with it or to retrieve some information from. The following methods are available:
-                <ul>
-                    <li>isFinalElementShown,</li>
-                    <li>Voltar,</li>
-                    <li>Próximo,</li>
-                    <li>first,</li>
-                    <li>getActiveStep</li>
-                </ul>
+                @foreach($questoesPagina2 as $questao)
+                <div class="form-group">
+                    <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
+                    <textarea name="questao_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
+                </div>
+                @endforeach
             </div>
         </div>
 
         <div class="aiia-wizard-step">
-            <h1>Callbacks</h1>
+            <h1>Página 3</h1>
             <div class="step-content">
-                As any good plugin, this one allows you to run your code when the plugin does something. This is a list of currently available  callbacks:
-                
+                @foreach($questoesPagina3 as $questao)
+                <div class="form-group">
+                    <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
+                    <textarea name="questao_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
+                </div>
+                @endforeach                
 
                 <pre>
-$("#wizard").aiiaWizard({
-    onInitSuccess: function () {
-        //alert("init success");
-    },
-    onSlideLeftLimitReached: function () {
-        //alert("onSlideLeftLimitReached success");
-    },
-    onSlideLeftFinished: function () {
-        //alert("onSlideLeftFinished success");
-    },
-    onSlideRightLimitReached: function () {
-        //alert("onSlideRightLimitReached success");
-    },
-    onSlideRightFinished: function () {
-        //alert("onSlideRightFinished success");
-    },
-    onButtonPreviousClick: function () {
-        // Instead of just sliding to the previous step when clicking the "previous" button, you can override this functionality instead.
-        // By doing that you must then explixitly call the "previous" plugin method as shown below if you want to slide to the previous step.
-        alert("onButtonPreviousClick");
-        $("#wizard").aiiaWizard('previous');
-    },
-    onButtonNextClick: function () {
-        // Instead of just sliding to the next step when clicking the "next" button, you can override this functionality instead.
-        // By doing that you must then explixitly call the "next" plugin method as shown below if you want to slide to the next step.
-        alert("onButtonNextClick");
-        $("#wizard").aiiaWizard('next');
-    }
-});               
+        TESTE
+                </pre>
+            </div>
+        </div>
+        <div class="aiia-wizard-step">
+            <h1>Página 4</h1>
+            <div class="step-content">
+                @foreach($questoesPagina4 as $questao)
+                <div class="form-group">
+                    <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
+                    <textarea name="questao_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
+                </div>
+                @endforeach                
+
+                <pre>
+         TESTE
+                </pre>
+            </div>
+        </div>
+        <div class="aiia-wizard-step">
+            <h1>Página 5</h1>
+            <div class="step-content">
+                @foreach($questoesPagina5 as $questao)
+                <div class="form-group">
+                    <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
+                    <textarea name="questao_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
+                </div>
+                @endforeach                
+
+                <pre>
+         TESTE
                 </pre>
             </div>
         </div>

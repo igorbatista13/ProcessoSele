@@ -16,23 +16,23 @@ class QuestaoController extends Controller
     {
         // Determinar o modelo específico com base na página
         $modelo = "App\Models\QuestaoPagina{$pagina}";
-        
+
         // Obter todas as questões da página específica
         $questoes = $modelo::all();
 
         return view('paginas.questoes.index', compact('questoes', 'pagina'));
     }
 
-    public function create()
+    public function create($pagina)
     {
-        return view('paginas.questoes.create');
+        return view('paginas.questoes.create', compact('pagina'));
     }
 
     public function store(Request $request, $pagina)
     {
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'descricao' => 'nullable|string',
+       //     'descricao' => 'nullable|string',
         ]);
 
         // Determinar o modelo específico com base na página
@@ -46,28 +46,33 @@ class QuestaoController extends Controller
     {
         // Determinar o modelo específico com base na página
         $modelo = "App\Models\QuestaoPagina{$pagina}";
+    
+        // Obter a questão específica
         $questao = $modelo::findOrFail($id);
-
-        return view('paginas.questoes.edit', compact('questao'));
+    
+        return view('paginas.questoes.edit', compact('questao', 'pagina'));
     }
 
-    public function update(Request $request, $pagina, Questao $questao)
+    public function update(Request $request, $pagina, $id)
     {
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'descricao' => 'nullable|string',
+         //   'descricao' => 'nullable|string',
         ]);
 
+        $modelo = "App\Models\QuestaoPagina{$pagina}";
+        $questao = $modelo::findOrFail($id);
         $questao->update($request->all());
 
         return redirect()->route('paginas.questoes.index', ['pagina' => $pagina])->with('success', 'Questão atualizada com sucesso!');
     }
 
-
-    public function destroy(Questao $questao)
+    public function destroy($pagina, $id)
     {
+        $modelo = "App\Models\QuestaoPagina{$pagina}";
+        $questao = $modelo::findOrFail($id);
         $questao->delete();
 
-        return redirect()->route('paginas.questoes.index')->with('success', 'Questão deletada com sucesso!');
+        return back()->with('success', 'Questão deletada com sucesso!');
     }
 }
