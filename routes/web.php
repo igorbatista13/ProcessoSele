@@ -15,10 +15,12 @@ use App\Http\Controllers\QuestaoController;
 
 Route::middleware(['auth'])->group(function () {
     //Editais
-    Route::resource('editais', VagaController::class)->only(['index', 'show', 'create', 'edit', 'store', 'update']);
+    Route::resource('editais', EditalController::class)->only(['index', 'show', 'create', 'edit', 'store', 'update']);
+    Route::get('/editaisativos', [EditalController::class, 'editaisativos']);
+    Route::get('/editaisinativos', [EditalController::class, 'editaisinativos']);
 
     // Inscrições
-    Route::get('/inscricoes', [InscricaoController::class, 'index'])->name('inscricoes.index');
+    Route::resource('inscricoes', InscricaoController::class)->only(['index', 'show', 'create', 'edit', 'store', 'update']);
     Route::post('/inscricoes/{vagaId}', [InscricaoController::class, 'store'])->name('inscricao.store');
     Route::get('/inscricoes/{id}', [InscricaoController::class, 'show'])->name('inscricao.show');
     Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('inscricao.minhasInscricoes');
@@ -31,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/perfil', [PerfilController::class, 'index'])->name('profile.index');
     Route::put('perfil/update', [PerfilController::class, 'update'])->name('perfil.update');
     // PAINEL DE CONTROLE DASHBOARD
-    Route::resource('/painel', PainelController::class)->only(['index', 'update']);
+    //Route::resource('/painel', PainelController::class)->only(['index', 'update']);
 
     //Documentos
     Route::resource('documentos', DocumentoController::class)->only(['store']);
@@ -60,12 +62,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('admin/inscricoes/{inscricao}/notificar', [InscricaoController::class, 'notificar'])->name('admin.inscricoes.notificar');
 });
 
-Route::resource('editais', VagaController::class)->only(['index', 'show']);
-Route::resource('/', EditalController::class)->only(['index', 'show']);
+Route::resource('/', PainelController::class)->only(['index', 'show']);
 
 //Route::get('/formulario', [EditalController::class, 'formulario'])->name('editais.formulario');
 
-Route::get('inscricao/form/{id}', [EditalController::class, 'create'])->name('inscricao.form');
-Route::post('inscricao/store/{id}', [EditalController::class, 'store'])->name('inscricao.store');
+Route::get('inscricao/form/{id}', [EditalController::class, 'formcreate'])->name('inscricao.form');
+Route::post('inscricao/store/{id}', [EditalController::class, 'formstore'])->name('inscricao.store');
 
 require __DIR__ . '/auth.php';

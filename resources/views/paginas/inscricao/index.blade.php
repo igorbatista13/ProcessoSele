@@ -63,7 +63,8 @@
                                             <th>Título</th>
                                             <th>ID</th>
                                             <th>Candidato</th>
-                                            <th>Date da inscrição</th>
+                                            <th>Data da inscrição</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     @foreach ($inscricao as $data)
@@ -76,7 +77,13 @@
                                                         class="font-bold link">{{ $data->id }}</a></td>
                                                 <td>{{ $data->user->name }}</td>
                                                 <td>{{ $data->created_at }}</td>
-
+                                                <td>
+                                                    <a class="sidebar-link" href="{{ route('inscricoes.edit', $data->id) }}"
+                                                        aria-expanded="false">
+                                                        <i data-feather="tag" class="feather-icon"> </i>
+                                                        <span class="hide-menu">Analisar
+                                                        </span>
+                                                    </a>
                                             </tr>
                                     @endforeach
 

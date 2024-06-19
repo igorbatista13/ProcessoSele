@@ -11,7 +11,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Informações sobre o Edital</h4>
                                 <hr>
-             
+
 
                                 </p>
                                 <div class="p-4 border shadow-sm rounded">
@@ -71,14 +71,18 @@
                                                         implemented template</span>
                                                 </li>
                                                 @if (!in_array($editais->id, $userInscriptions))
-                                                <form action="{{ route('inscricao.form', $editais->id) }}" method="GET">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary">Inscrever-se</button>
-                                                </form>
-                                            @else
-                                                <span class="text-success">Já inscrito</span>
-                                            @endif
-                                            
+                                                    <form action="{{ route('inscricao.form', $editais->id) }}"
+                                                        method="GET">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-primary">Inscreva-se</button>
+                                                    </form>
+                                                @else
+                                                    <div class="d-inline-flex align-items-center">
+                                                        <span
+                                                            class="badge bg-success font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">INSCRITO</span>
+                                                    </div>
+                                                @endif
+
                                             </ul>
                                         </div>
                                     </div>

@@ -4,66 +4,91 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/painel') }}"
-                        aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                            class="hide-menu">Painel</span></a></li>
-                <li class="list-divider"></li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ asset('/') }}" aria-expanded="false">
-                        <i data-feather="tag" class="feather-icon"></i>
-                        <span class="hide-menu">Editais
-                        </span>
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/') }}"
+                        aria-expanded="false">
+                        <i data-feather="home" class="feather-icon"></i>
+                        <span class="hide-menu">Painel</span>
                     </a>
                 </li>
+                <li class="list-divider"></li>
+
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                        aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                            class="hide-menu">Editais </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        <li class="sidebar-item">
+                            <a href="{{ asset('/editais') }}" class="sidebar-link">
+                                <span class="hide-menu"> Todos os editais
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ asset('/editaisativos') }}" class="sidebar-link">
+                                <span class="hide-menu "> Editais Ativos
+                                </span>
+                            </a>
+                        </li>
+
+
+                        <li class="sidebar-item">
+                            <a href="{{ asset('/editaisinativos') }}" class="sidebar-link">
+                                <span class="hide-menu "> Editais Encerrados
+                                </span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
 
                 {{-- Documentos
                 Editais
                 Inscrições --}}
 
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                    aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                        class="hide-menu">Inscrições </span></a>
-                <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                    <li class="sidebar-item"><a href="{{ asset('/inscricoes') }}" class="sidebar-link"><span
-                                class="hide-menu"> Ver todas
-                            </span></a>
-                    </li>
-                    <li class="sidebar-item"><a href="{{ asset('/minhas-inscricoes') }}" class="sidebar-link"><span
-                                class="hide-menu"> Minhas Inscrições
-                            </span></a>
-                    </li>
-        
-                </ul>
-            </li>
+                        aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                            class="hide-menu">Inscrições </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        <li class="sidebar-item"><a href="{{ asset('/inscricoes') }}" class="sidebar-link"><span
+                                    class="hide-menu"> Ver todas
+                                </span></a>
+                        </li>
+                        <li class="sidebar-item"><a href="{{ asset('/minhas-inscricoes') }}" class="sidebar-link"><span
+                                    class="hide-menu"> Minhas Inscrições
+                                </span></a>
+                        </li>
+
+                    </ul>
+                </li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                    aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                        class="hide-menu">Questões do Formulário </span></a>
-                <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                    <li class="sidebar-item"><a href="{{ asset('/questoes/1') }}" class="sidebar-link"><span
-                                class="hide-menu"> Questões da página 1
-                            </span></a>
-                    </li>
-                    <li class="sidebar-item"><a href="{{ asset('/questoes/2') }}" class="sidebar-link">
-                        <span class="hide-menu"> Questões da página 2 </span></a>
-                    </li>
-                    <li class="sidebar-item"><a href="{{ asset('/questoes/2') }}" class="sidebar-link">
-                        <span class="hide-menu"> Questões da página 3 </span></a>
-                    </li>
-                    <li class="sidebar-item"><a href="{{ asset('/questoes/2') }}" class="sidebar-link">
-                        <span class="hide-menu"> Questões da página 4 </span></a>
-                    </li>
-                    <li class="sidebar-item"><a href="{{ asset('/questoes/2') }}" class="sidebar-link">
-                        <span class="hide-menu"> Questões da página 5 </span></a>
-                    </li>
-        
-                </ul>
-            </li>
+                        aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                            class="hide-menu">Questões do Formulário </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        <li class="sidebar-item"><a href="{{ asset('/questoes/1') }}" class="sidebar-link"><span
+                                    class="hide-menu"> Questões da página 1
+                                </span></a>
+                        </li>
+                        <li class="sidebar-item"><a href="{{ asset('/questoes/2') }}" class="sidebar-link">
+                                <span class="hide-menu"> Questões da página 2 </span></a>
+                        </li>
+                        <li class="sidebar-item"><a href="{{ asset('/questoes/3') }}" class="sidebar-link">
+                                <span class="hide-menu"> Questões da página 3 </span></a>
+                        </li>
+                        <li class="sidebar-item"><a href="{{ asset('/questoes/4') }}" class="sidebar-link">
+                                <span class="hide-menu"> Questões da página 4 </span></a>
+                        </li>
+                        <li class="sidebar-item"><a href="{{ asset('/questoes/5') }}" class="sidebar-link">
+                                <span class="hide-menu"> Questões da página 5 </span></a>
+                        </li>
+
+                    </ul>
+                </li>
 
 
 
 
-              
+
 
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
                         aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
@@ -258,12 +283,12 @@
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="../../docs/docs.html"
                         aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span
                             class="hide-menu">Documentation</span></a></li> --}}
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#"
-                        aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
-                            class="hide-menu">Suporte</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#"
-                        aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
-                            class="hide-menu">Logout</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#" aria-expanded="false"><i
+                            data-feather="log-out" class="feather-icon"></i><span class="hide-menu">Suporte</span></a>
+                </li>
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#" aria-expanded="false"><i
+                            data-feather="log-out" class="feather-icon"></i><span class="hide-menu">Sair</span></a>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

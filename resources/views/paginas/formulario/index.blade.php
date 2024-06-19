@@ -67,13 +67,13 @@
                     </div>
             </div>
         </div>
-
+        <form action="{{ route('inscricoes.store', $vaga->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
         <div class="aiia-wizard-step">
             <h1>Informações Pessoais (Página 1)</h1>
             <div class="step-content">
                
-                    <form action="{{ route('inscricoes.store', $vaga->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
+           
  
                     <div class="form-group">
                         <label for="nome">Nome</label>
@@ -91,8 +91,6 @@
                         <textarea name="questao_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
                     </div>
                     @endforeach
-                    <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
-                </form>
 
             </div>
         </div>
@@ -155,7 +153,9 @@
          TESTE
                 </pre>
             </div>
-        </div>
+        </form>
+        <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
+    </div>
 
     </div>
 </div>

@@ -30,6 +30,14 @@ class InscricaoController extends Controller
         'countInscricao', 'countInscricaoPendente', 'countInscricaoAprovadas', 'countInscricaoNaoAprovadas'
     ));
     }
+
+        public function edit($id)
+        {
+            $inscricao = Inscricao::findOrFail($id);
+            return view('paginas.inscricao.edit', compact('inscricao'));
+        }
+    
+
     public function store(Request $request, $id)
     {
         $request->validate([

@@ -109,10 +109,11 @@
                                         <div class="form-group">
                                             <label for="status">Status</label>
                                             <select name="status" id="status" class="form-control" required>
-                                                <option value="ativo" {{ $editais->status == 'ativo' ? 'selected' : '' }}>
+                                                <option value="Ativo" {{ $editais->status == 'Ativo' ? 'selected' : '' }}>
                                                     Ativo</option>
-                                                <option value="inativo"
-                                                    {{ $editais->status == 'inativo' ? 'selected' : '' }}>Inativo</option>
+                                                
+                                                <option value="Encerrado"
+                                                    {{ $editais->status == 'Encerrado' ? 'selected' : '' }}>Encerrado</option>
                                             </select>
                                         </div>
 
