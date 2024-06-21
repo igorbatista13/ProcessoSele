@@ -9,8 +9,7 @@
                     <div class="card">
                         <div class="card-body collapse show">
                             <h4 class="card-title">Perfil</h4>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional
-                                content.</p>
+                            <p class="card-text"> Edite as suas informações aqui.</p>
                         </div>
                     </div>
                 </div>
@@ -30,7 +29,7 @@
                   @if (Auth::user()->perfil && Auth::user()->perfil->image)
                   <img src="{{asset('/images/perfil/'. Auth::user()->perfil->image)}}" alt="Profile">
                   @else
-                  <img src="{{ asset('images/brasao_mt.png') }}" alt="Profile" class="rounded">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s" width="100px" alt="Profile" class="rounded">
               @endif
     
                   <h2>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h2>

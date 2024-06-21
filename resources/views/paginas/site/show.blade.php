@@ -62,13 +62,11 @@
                                             <ul class="list-style-none">
                                                 <li class="my-2 border-bottom pb-3">
                                                     <span class="font-weight-medium text-dark"><i
-                                                            class="icon-note mr-2 text-danger"></i> Does Not
-                                                        Includes:</span>
+                                                            class="icon-note mr-2 text-danger"></i> Texto:</span>
                                                 </li>
 
                                                 <li class="my-3">
-                                                    <span><i class="icon-pencil mr-2 text-danger"></i> Solve bug in your
-                                                        implemented template</span>
+                                                    <span><i class="icon-pencil mr-2 text-danger"></i>Texto</span>
                                                 </li>
                                                 @if (!in_array($editais->id, $userInscriptions))
                                                     <form action="{{ route('inscricao.form', $editais->id) }}"

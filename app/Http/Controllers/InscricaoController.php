@@ -10,6 +10,18 @@ use App\Models\Resposta;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
+use App\Models\Questao;
+use App\Models\QuestaoPagina1;
+use App\Models\QuestaoPagina2;
+use App\Models\QuestaoPagina3;
+use App\Models\QuestaoPagina4;
+use App\Models\QuestaoPagina5;
+
+use App\Models\RespostaPagina1;
+use App\Models\RespostaPagina2;
+use App\Models\RespostaPagina3;
+use App\Models\RespostaPagina4;
+use App\Models\RespostaPagina5;
 
 class InscricaoController extends Controller
 {
@@ -57,20 +69,27 @@ class InscricaoController extends Controller
         $inscricao = new Inscricao();
         $inscricao->user_id = Auth::id();
         $inscricao->vaga_id = $id;
-        $inscricao->motivo = ''; // Defina um valor padrão ou remova se não for necessário
+        $inscricao->motivo = 'eitaaaa'; // Defina um valor padrão ou remova se não for necessário
         $inscricao->status = 'pendente';
         $inscricao->save();
      
         foreach ($request->except(['nome', 'cpf', 'motivo', '_token']) as $key => $value) {
             if (strpos($key, 'questao_') === 0) {
                 $questaoId = substr($key, 8);
-                Resposta::create([
-                    'inscricaos_id' => $inscricao->id,
-                    'questoes_id' => $questaoId,
-                    'resposta' => $value,
-                ]);
+                
+                // Verifique se a questão existe na tabela
+                if (QuestaoPagina1::find($questaoId)) {
+                    Resposta::create([
+                        'inscricaos_id' => $inscricao->id,
+                        'questoes_id' => $questaoId,
+                        'resposta' => $value,
+                    ]);
+                } else {
+                    return redirect()->back()->with('error', 'Questão não encontrada.');
+                }
             }
         }
+        
         // Enviar email de confirmação (opcional)
         Mail::to(Auth::user()->email)->send(new \App\Mail\InscricaoRealizada($inscricao));
         //Mail::to($user->email)->send(new WelcomeMail($user));

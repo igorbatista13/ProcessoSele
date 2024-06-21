@@ -3470,7 +3470,7 @@ input[type="button"].btn-block {
   border-radius: calc(0.25rem - 0); }
 
 .card-img-top {
-  width: 100%;
+  width: 50% !important;
   border-top-left-radius: calc(0.25rem - 0);
   border-top-right-radius: calc(0.25rem - 0); }
 

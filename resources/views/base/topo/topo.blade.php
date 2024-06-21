@@ -13,8 +13,8 @@
             <a href="{{ asset('/') }}">
                 <b class="logo-icon">
                     <!-- Dark Logo icon -->
-                    <img src="https://www3.seduc.mt.gov.br/image/layout_set_logo?img_id=8125250&t=1718007197077" width="200px" class="dark-logo" />
-                    <img src="https://www3.seduc.mt.gov.br/image/layout_set_logo?img_id=8125250&t=1718007197077" width="200px" class="light-logo" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s" width="80px" class="dark-logo" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s" width="80px" class="light-logo" />
                     <!-- Light Logo icon -->
                 </b>
                 <!--End Logo icon -->
@@ -149,8 +149,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <img src="{{ asset('/assets/images/users/logo.png') }}" alt="user" class="rounded-circle"
-                        width="60">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s" alt="user" class="rounded-circle"
+                        width="50">
                         <span class="ml-2 d-none d-lg-inline-block">
                             <span>Olá,</span>
                             @auth
@@ -183,8 +183,7 @@
                             class="svg-icon mr-2 ml-1"></i>
                         Sair</a>
                     <div class="dropdown-divider"></div>
-                    <div class="pl-4 p-3"><a href="{{ asset('/logout') }}" class="btn btn-sm btn-info">View
-                            Profile</a></div>
+                    <div class="pl-4 p-3"><a href="{{ asset('/') }}" class="btn btn-sm btn-info">Dúvidas?</a></div>
                 </div>
             </li>
             <!-- ============================================================== -->

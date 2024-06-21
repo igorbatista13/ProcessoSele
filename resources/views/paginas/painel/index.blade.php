@@ -107,8 +107,8 @@
                                         alt="Card image cap"> --}}
 
                                     <img class="card-img-top img-fluid"
-                                        src="https://www3.seduc.mt.gov.br/image/layout_set_logo?img_id=8125250&t=1718787478653"
-                                        alt="Card image cap">
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s"
+                                        alt="Card image cap" width="100px">
                                     <div class="card-body">
                                         <h4 class="card-title">{{ $data->titulo }}</h4>
                                         <p class="card-text">{{ $data->descricao }}</p>
