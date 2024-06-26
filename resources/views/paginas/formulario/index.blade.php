@@ -65,8 +65,14 @@
               </div>
               @foreach($questoesPagina1 as $questao)
               <div class="form-group">
-                <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
-                <textarea name="questao_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
+                  <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
+                  <textarea name="questao_pagina1_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
+              </div>
+              @endforeach
+              @foreach($questoesPagina2 as $questao)
+              <div class="form-group">
+                  <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
+                  <textarea name="questao_pagina2_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
               </div>
               @endforeach
               <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
@@ -76,12 +82,7 @@
           <div class="aiia-wizard-step">
             <h1>Questão 2</h1>
             <div class="step-content">
-              @foreach($questoesPagina2 as $questao)
-              <div class="form-group">
-                <label for="questao_{{ $questao->id }}">{{ $questao->titulo }}</label>
-                <textarea name="questao_{{ $questao->id }}" id="questao_{{ $questao->id }}" class="form-control"></textarea>
-              </div>
-              @endforeach
+           
             </div>
           </div>
           <div class="aiia-wizard-step">

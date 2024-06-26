@@ -152,11 +152,11 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s" alt="user" class="rounded-circle"
                         width="50">
                         <span class="ml-2 d-none d-lg-inline-block">
-                            <span>Olá,</span>
+                          
                             @auth
-                                <span class="text-dark">{{ Auth::user()->name }}</span>
+                                <span class="text-dark">  <span>Olá,</span> {{ Auth::user()->name }}</span>
                             @else
-                                <span class="text-dark">Convidado</span>
+                                <span class="text-dark"></span>
                             @endauth
                             <i data-feather="chevron-down" class="svg-icon"></i>
                         </span>

@@ -15,7 +15,7 @@ use App\Http\Controllers\QuestaoController;
 
 Route::middleware(['auth'])->group(function () {
     //Editais
-    Route::resource('editais', EditalController::class)->only(['index', 'show', 'create', 'edit', 'store', 'update']);
+    Route::resource('editais', EditalController::class)->only(['index', 'create', 'edit', 'store', 'update']);
     Route::get('/editaisativos', [EditalController::class, 'editaisativos']);
     Route::get('/editaisinativos', [EditalController::class, 'editaisinativos']);
 
@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('inscricao.minhasInscricoes');
     Route::post('inscricoes/{vaga}', [InscricaoController::class, 'store'])->name('inscricoes.store');
     Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('minhas-inscricoes');
+    Route::get('inscricao/form/{id}', [EditalController::class, 'formcreate'])->name('inscricao.form');
 
     //PERFIL
     //   Route::resource('perfil', PerfilController::class)->only(['index', 'update', 'edit']);
@@ -63,10 +64,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::resource('/', PainelController::class)->only(['index', 'show']);
+Route::get('/editais/{id}', [EditalController::class, 'show'])->name('editais.show');
 
 //Route::get('/formulario', [EditalController::class, 'formulario'])->name('editais.formulario');
 
-Route::get('inscricao/form/{id}', [EditalController::class, 'formcreate'])->name('inscricao.form');
 Route::post('inscricao/store/{id}', [EditalController::class, 'formstore'])->name('inscricao.store');
 
 require __DIR__ . '/auth.php';

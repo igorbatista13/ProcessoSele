@@ -72,7 +72,7 @@
                                                     <form action="{{ route('inscricao.form', $editais->id) }}"
                                                         method="GET">
                                                         @csrf
-                                                        <button type="submit" class="btn btn-primary">Inscreva-se</button>
+                                                        <button type="submit" class="btn btn-primary">Faça o login para se Inscrever</button>
                                                     </form>
                                                 @else
                                                     <div class="d-inline-flex align-items-center">
