@@ -14,29 +14,36 @@ return new class extends Migration
         Schema::create('perfil', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-       //Dados pessoais
+        //Dados pessoais
             $table->string('nome');
             $table->string('cpf')->nullable();
             $table->string('rg')->nullable();
             $table->string('pcd')->nullable();
             $table->string('sexo')->nullable();
             $table->string('escolaridade')->nullable();
-            $table->date('data_nascimento');
+            $table->date('data_nascimento')->nullable();
             $table->string('email')->nullable();                    
             $table->string('orgao')->nullable();
             $table->string('cargo')->nullable();
-            // Endereço pessoal
+            $table->string('telefone')->nullable();
+        // Endereço pessoal
             $table->string('endereco')->nullable();
             $table->string('cidade')->nullable();
             $table->string('estado')->nullable();
             $table->string('CEP')->nullable();
-            $table->string('telefone')->nullable();
+        
+        // Rede Social
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('site')->nullable();
+        
+        // Imagem    
             $table->string('image')->nullable();
-            $table->string('tipo')->nullable();
+        
+            $table->string('tipo')->nullable(); // ???
+        // Pontos GPE
+            $table->string('pontos')->nullable();
             
             $table->timestamps();
         

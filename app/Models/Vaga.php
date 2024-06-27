@@ -9,11 +9,11 @@ class Vaga extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'ano',     'titulo',        'cidade',
+        'modelo_formulario_id', 'ano',     'titulo',        'cidade',
         'estado',   'local',        'cargo',
         'perfil',   'descricao',    'image',
         'anexo1',   'data_inicio',  'data_fim',
-        'status',
+        'status',   
     ];
 
     public function inscricoes()

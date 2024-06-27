@@ -5,19 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vaga;
 use App\Models\Inscricao;
-use App\Models\formulario;
-use App\Models\Questao;
-use App\Models\QuestaoPagina1;
-use App\Models\QuestaoPagina2;
-use App\Models\QuestaoPagina3;
-use App\Models\QuestaoPagina4;
-use App\Models\QuestaoPagina5;
-
-use App\Models\RespostaPagina1;
-use App\Models\RespostaPagina2;
-use App\Models\RespostaPagina3;
-use App\Models\RespostaPagina4;
-use App\Models\RespostaPagina5;
+use App\Models\Formulario;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -60,8 +48,8 @@ class EditalController extends Controller
 
     public function create()
     {
-
-        return view('paginas.editais.create');
+        $modeloformulario = Formulario::get();
+        return view('paginas.editais.create',compact('modeloformulario'));
     }
 
 
@@ -70,22 +58,23 @@ class EditalController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'ano' => 'required|integer',
-            'titulo' => 'required|string|max:255',
-            'cidade' => 'required|string|max:255',
-            'estado' => 'required|string|max:255',
-            'local' => 'required|string|max:255',
-            'cargo' => 'required|string|max:255',
-            'perfil' => 'required|string|max:255',
-            'descricao' => 'required|string',
-            'image' => 'nullable|image|max:2048',
-            'anexo1' => 'nullable|file|max:2048',
+            'modelo_formulario_id' => 'required|integer',
+            'ano' => 'required',
+            'titulo' => 'required',
+            'cidade' => 'required',
+            'estado' => 'required',
+            'local' => 'required',
+            'cargo' => 'required',
+            'perfil' => 'required',
+            'descricao' => 'required',
+            'image' => 'nullable|image',
+            'anexo1' => 'nullable|file',
             'data_inicio' => 'required|date',
             'data_fim' => 'required|date',
-            'status' => 'required|string|max:255',
+            'status' => 'required',
         ]);
-
-        // Save the data
+    
+        // Create a new Vaga instance and fill it with validated data
         $editais = new Vaga($validatedData);
 
         if ($request->hasFile('image')) {
@@ -100,7 +89,7 @@ class EditalController extends Controller
 
         $editais->save();
 
-        return view('paginas.editais.create');
+        return back();
     }
 
     public function edit($id)
@@ -113,6 +102,7 @@ class EditalController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'modelo_formulario_id' => 'required|integer',
             'ano' => 'required',
             'titulo' => 'required',
             'cidade' => 'required',

@@ -1,19 +1,29 @@
 @extends('base.header.header')
 @section('content')
-
-<div class="page-wrapper">
+    <div class="page-wrapper">
         <div class="container-fluid">
             <div class="row">
 
                 <div class="col-sm-12 col-md-6 col-lg-12">
                     <div class="card">
                         <div class="card-body">
+
                             <body>
                                 <div class="container mt-5">
                                     <h1>Novo Edital</h1>
 
                                     <form action="{{ route('editais.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        <div class="form-group">
+                                            <label for="ano">Modelo de Formulário</label>
+                                            <select name="modelo_formulario_id" id="modelo_formulario_id"
+                                            @foreach ($modeloformulario as $modeloformularios)
+                                                    class="form-control">
+                                                    <option value="{{ $modeloformularios->id }}">
+                                                        {{ $modeloformularios->nome }}</option>
+                                                        @endforeach
+                                                </select>
+                                        </div>
                                         <div class="form-group">
                                             <label for="ano">Ano</label>
                                             <input type="number" name="ano" id="ano" class="form-control"
@@ -88,9 +98,8 @@
                                             <select name="status" id="status" class="form-control" required>
                                                 <option value="Ativo">
                                                     Ativo</option>
-                                                
-                                                <option value="Encerrado"
-                                                    >Encerrado</option>
+
+                                                <option value="Encerrado">Encerrado</option>
                                             </select>
                                         </div>
 

@@ -16,8 +16,8 @@ class CreateRespostasTable extends Migration
             $table->timestamps();
         
             // Adicionando chaves estrangeiras para questoes_pagina1 e questoes_pagina2
-            $table->foreign('questoes_id')->references('id')->on('questoes_pagina1')->onDelete('cascade');
-            $table->foreign('questoes_id')->references('id')->on('questoes_pagina2')->onDelete('cascade');
+        //    $table->foreign('questoes_id')->references('id')->on('questoes_pagina1')->onDelete('cascade');
+         //   $table->foreign('questoes_id')->references('id')->on('questoes_pagina2')->onDelete('cascade');
             // $table->foreign('questoes_id')->references('id')->on('questoes_pagina3')->onDelete('cascade');
             // $table->foreign('questoes_id')->references('id')->on('questoes_pagina4')->onDelete('cascade');
             // $table->foreign('questoes_id')->references('id')->on('questoes_pagina5')->onDelete('cascade');

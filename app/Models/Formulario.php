@@ -10,14 +10,14 @@ class Formulario extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'vaga_id',
         'nome',
-        'cpf',
+        'descricao',
+        'inicio',
+        'fim',
         // Adicione outros campos conforme necessário
     ];
     
-    protected $table = 'formularios';
+    protected $table = 'modelo_formularios';
 
     public function user()
     {
