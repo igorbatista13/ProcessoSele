@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Formulário de Inscrição</title>
+
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="https://bootswatch.com/lumen/bootstrap.min.css">
+ <link rel="stylesheet" href="https://bootswatch.com/lumen/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('/assets/formulario/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/assets/formulario/style.css') }}">
-</head>
-<body>
+
+  <div class="page-wrapper">
+    <div class="container-fluid">
+  <form action="{{ route('inscricoes.store', $vaga->id) }}" method="POST" enctype="multipart/form-data">
+    @csrf 
   <!-- partial:index.partial.html -->
   <div class="outer-container">
-    <div id="wizard" class="aiia-wizard" style="display: none;">
+    <div id="wizard" class="aiia-wizard">
       <div class="aiia-wizard-step">
-        <h1>INFORMAÇÕES SOBRE O EDITAL</h1>
+        <h1>SOBRE O EDITAL</h1>
     
         <div class="step-content">
           <h4><b>Edital:</b> {{ $vaga->titulo }}</h4>
@@ -45,13 +45,13 @@
             </div>
           </div>
         </div>
+        
+    
           <div class="aiia-wizard-step">
    
    
             <h1>INFORMAÇÕES PESSOAIS</h1>
 
-            <form action="{{ route('inscricoes.store', $vaga->id) }}" method="POST" enctype="multipart/form-data">
-              @csrf 
                      
           
              <div class="step-content">
@@ -130,7 +130,7 @@
           </form>
           </div>
           <div class="aiia-wizard-step">
-            <h1>Questão 5</h1>
+            <h1>  FINALIZAR</h1>
             <div class="step-content">
              
               <pre>TESTE</pre>
@@ -144,5 +144,5 @@
   <!-- partial -->
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
   <script src="{{asset('/dist/js/pages/formulario/script.js')}}"></script>
-</body>
-</html>
+
+  
