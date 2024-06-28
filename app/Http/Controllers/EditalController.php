@@ -26,7 +26,7 @@ class EditalController extends Controller
         $editais = Vaga::paginate(10);
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
-        return view('paginas.editais.index', compact('editais', 'userInscriptions','status'));
+        return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status'));
     }
     public function editaisativos()
     {
@@ -34,7 +34,7 @@ class EditalController extends Controller
         $editais = Vaga::where('status', '=', 'Ativo')->paginate(10);
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
-        return view('paginas.editais.index', compact('editais', 'userInscriptions','status'));
+        return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status'));
     }
     public function editaisinativos()
     {
@@ -42,14 +42,14 @@ class EditalController extends Controller
         $editais = Vaga::where('status', '=', 'Encerrado')->paginate(10);
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
-        return view('paginas.editais.index', compact('editais', 'userInscriptions','status'));
+        return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status'));
     }
-    
+
 
     public function create()
     {
         $modeloformulario = Formulario::get();
-        return view('paginas.editais.create',compact('modeloformulario'));
+        return view('paginas.editais.create', compact('modeloformulario'));
     }
 
 
@@ -73,7 +73,7 @@ class EditalController extends Controller
             'data_fim' => 'required|date',
             'status' => 'required',
         ]);
-    
+
         // Create a new Vaga instance and fill it with validated data
         $editais = new Vaga($validatedData);
 
@@ -135,43 +135,31 @@ class EditalController extends Controller
     }
 
     public function show($id)
-    {        
+    {
         $editais = Vaga::findOrFail($id);
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
-        return view('paginas.site.show', compact('editais','userInscriptions'));
+        return view('paginas.site.show', compact('editais', 'userInscriptions'));
     }
 
-    public function formulario($id) {
+    public function formulario($id)
+    {
 
-        $questoesPagina1 = QuestaoPagina1::all();
-        $questoesPagina2 = QuestaoPagina2::all();
-        $questoesPagina3 = QuestaoPagina3::all();
-        $questoesPagina4 = QuestaoPagina4::all();
-        $questoesPagina5 = QuestaoPagina5::all();
 
-        return view('formulario.formulario', compact('id', 'questoesPagina1', 'questoesPagina2', 'questoesPagina3', 'questoesPagina4', 'questoesPagina5'));
-    
-   //     return view('paginas.formulario.index');
+
+        return view('formulario.formulario', compact('id'));
+
+        //     return view('paginas.formulario.index');
     }
 
     public function formcreate($id)
     {
 
         $vaga = Vaga::findOrFail($id);
-        $questoes = Questao::all();
-        $questoesPagina1 = QuestaoPagina1::all();
-        $questoesPagina2 = QuestaoPagina2::all();
-        $questoesPagina3 = QuestaoPagina3::all();
-        $questoesPagina4 = QuestaoPagina4::all();
-        $questoesPagina5 = QuestaoPagina5::all();
+
 
 
         $editalId = $id;
-        return view('paginas.formulario.index', compact('editalId','vaga','questoesPagina1', 'questoesPagina2', 'questoesPagina3', 'questoesPagina4', 'questoesPagina5'));
+        return view('paginas.formulario.index', compact('editalId', 'vaga'));
     }
-
-
-
-
 }

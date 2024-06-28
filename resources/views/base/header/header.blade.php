@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
-    <title>Processo Seletivo()</title>
+    <title>Processo Seletivo SEDUC - MT</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('/assets/extra-libs/c3/c3.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/libs/chartist/dist/chartist.min.css') }}">

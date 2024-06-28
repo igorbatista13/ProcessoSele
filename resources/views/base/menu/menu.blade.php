@@ -1,7 +1,9 @@
+@auth
 <aside class="left-sidebar" data-sidebarbg="skin6">
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar" data-sidebarbg="skin6">
         <!-- Sidebar navigation-->
+
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/') }}"
@@ -295,3 +297,6 @@
     </div>
     <!-- End Sidebar scroll-->
 </aside>
+@else
+
+@endauth

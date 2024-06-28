@@ -13,7 +13,7 @@
   <div class="outer-container">
     <div id="wizard" class="aiia-wizard" style="display: none;">
       <div class="aiia-wizard-step">
-        <h1>INFORMAÇÕES SOBRE O EDITAL</h1>
+        <h1>Informações</h1>
     
         <div class="step-content">
           <h4><b>Edital:</b> {{ $vaga->titulo }}</h4>
@@ -38,9 +38,9 @@
                 <li class="my-3">
                   <span><i class="icon-date mr-2 text-danger"></i> <b>Data Fim:</b> {{ $vaga->data_fim }}</span>
                 </li>
-                {{-- <li class="my-3">
+                <li class="my-3">
                   <span><i class="icon-pencil mr-2 text-danger"></i> <b>Documentos:</b> {{ $vaga->anexo1 }}</span>
-                </li> --}}
+                </li>
               </ul>
             </div>
           </div>
@@ -48,7 +48,7 @@
           <div class="aiia-wizard-step">
    
    
-            <h1>INFORMAÇÕES PESSOAIS</h1>
+            <h1>Questão 1</h1>
 
             <form action="{{ route('inscricoes.store', $vaga->id) }}" method="POST" enctype="multipart/form-data">
               @csrf 
@@ -56,78 +56,38 @@
           
              <div class="step-content">
               <div class="form-group">
-                <label for="nome">Nome completo</label>
+                <label for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" name="nome">
               </div>
               <div class="form-group">
-                <label for="cpf">CPF</label>
+                <label for="cpf">CPF fixo</label>
                 <input type="text" class="form-control" id="cpf" name="cpf">
               </div>
-              <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="text" class="form-control" id="email" name="email">
-              </div>
             
-              <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone">
-              </div>
-              <div class="form-group">
-                <label for="dre">DRE</label>
-                <input type="text" class="form-control" id="dre" name="dre">
-              </div>
-              <div class="form-group">
-                <label for="cidade">Município</label>
-                <input type="text" class="form-control" id="cidade" name="cidade">
-              </div>
-              <div class="form-group">
-                <label for="lotacao">Lotação</label>
-                <input type="text" class="form-control" id="lotacao" name="lotacao">
-              </div>
-              <div class="form-group">
-                <label for="formacao">Formação</label>
-                <input type="text" class="form-control" id="formacao" name="formacao">
-              </div>
-            
-         
+              <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
+            </form>
             </div> 
           </div>
           <div class="aiia-wizard-step">
-            <h1>BANCO DE TALENTOS</h1>
+            <h1>Questão 2</h1>
             <div class="step-content">
-              <div class="form-group">
-                <label for="bancotalento">Servidor está inscrito no <b> Banco de Talentos?</b> </label>
-                <input type="checkbox" class="form-control" id="bancotalento" name="bancotalento">
-                <label for="bancotalento">SIM</label> 
-                <input type="checkbox" class="form-control" id="bancotalento" name="bancotalento">
-
-                <label for="bancotalento">NÃO</label> 
-              </div>
+           
             </div>
           </div>
           <div class="aiia-wizard-step">
-            <h1>ANEXOS</h1>
+            <h1>Questão 3</h1>
             <div class="step-content">
-              <div class="form-group">
-                <label for="bancotalento">Anexar em arquivo PDF único documento(os), confome o Edital <b> {Trazer dados do Edital aqui}</b> </label>
-                <input type="file" class="form-control" id="bancotalento" name="bancotalento">
-              </div>
+          
 
               <pre>aa</pre>
             </div>
           </div>
           <div class="aiia-wizard-step">
-            <h1>ÁREA E/OU DISCIPLINA</h1>
+            <h1>Questão 4</h1>
             <div class="step-content">
-              <div class="form-group">
-                <label for="area">Anexar em arquivo PDF único documento(os), confome o Edital <b> {Trazer dados do Edital aqui}</b> </label>
-                <input type="checkbox" class="form-control" id="area" name="area">
-                <label for="area"> 1</label>
-              </div>
+           
               <pre>TESTE</pre>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
-          </form>
           </div>
           <div class="aiia-wizard-step">
             <h1>Questão 5</h1>

@@ -37,17 +37,19 @@
                                             Edital</a>
                                         @if (!in_array($data->id, $userInscriptions))
                                         @else
-                                            <span class="text-success">Inscrito</span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <!-- Card -->
-                            </div>
-                        @endforeach
+                                            <span class="badge bg-success font-16 text-white  badge-pill ml-0 d-md-none d-lg-block">INSCRITO</span>
+                                    
+                                    <span class="text-success">InscritoSS</span>
+                        @endif
                     </div>
                 </div>
+                <!-- Card -->
             </div>
+            @endforeach
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 @endsection
 @include('base.footer.footer')

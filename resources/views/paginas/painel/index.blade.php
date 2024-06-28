@@ -10,21 +10,21 @@
                 <div class="col-7 align-self-center">
                     <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">
                         @auth
-                        <span class="text-dark"> Olá, {{ Auth::user()->name }}</span>
-                    @else
-                        <span class="text-dark">Seja Bem Vindo!</span>
-                    @endauth
-                       </h3>
+                            <span class="text-dark"> {{ Auth::user()->name }}</span>
+                        @else
+                            <span class="text-dark"> Olá!</span>
+                        @endauth
+                    </h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
-                                <li class="breadcrumb-item"><a href="index.html">Painel</a>
+                                <li class="breadcrumb-item"><a>Seja bem vindo ao Processo Seletivo SEDUC - MT</a>
                                 </li>
                             </ol>
                         </nav>
                     </div>
                 </div>
- 
+
             </div>
         </div>
         <!-- ============================================================== -->
@@ -37,74 +37,12 @@
             <!-- *************************************************************** -->
             <!-- Start First Cards -->
             <!-- *************************************************************** -->
-            <div class="card-group">
-                <div class="card border-right">
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <div class="d-inline-flex align-items-center">
-                                    <h2 class="text-dark mb-1 font-weight-medium">5</h2>
-                                  
-                                </div>
-                                <h5 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Processos Seletivos</h5>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="file"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border-right">
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup
-                                        class="set-doller"></sup>2</h2>
-                                <h5 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Minhas Inscrições
-                                </h5>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="file"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border-right">
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <div class="d-inline-flex align-items-center">
-                                    <h3 class="text-primary mb-1 font-weight-medium">Meu Perfil</h3>
-                                  
-                                </div>
-                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Edite as suas informações</h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="file"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <h3 class="text-dark mb-1 font-weight-medium">Banco de Talentos</h3>
-                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Texto sobre o banco de talentos</h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        @include('paginas/painel/menucard')
 
             <div class="row">
 
                 @foreach ($inscricao as $data)
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-3 col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <!-- Card -->
@@ -122,10 +60,10 @@
                                             Edital</a>
                                         @if (!in_array($data->id, $userInscriptions))
                                         @else
-                                        <div class="d-inline-flex align-items-center">
-                                            <span
-                                                class="badge bg-success font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">INSCRITO</span>
-                                        </div>
+                                            <div class="d-inline-flex align-items-center">
+                                                <span
+                                                    class="badge bg-success font-16 text-white badge-pill ml-0 d-md-none d-lg-block">INSCRITO</span>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
@@ -138,6 +76,5 @@
             </div>
         </div>
     </div>
-   
+    @include('base.footer.footer')
 @endsection
-@include('base.footer.footer')

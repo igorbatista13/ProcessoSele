@@ -72,12 +72,19 @@
                                                     <form action="{{ route('inscricao.form', $editais->id) }}"
                                                         method="GET">
                                                         @csrf
+                                                   
+                                                        @auth
+                                                        <button type="submit" class="btn btn-primary">INSCREVA - SE</button>
+
+                                                        @else
                                                         <button type="submit" class="btn btn-primary">Faça o login para se Inscrever</button>
+                                                        @endauth
                                                     </form>
                                                 @else
                                                     <div class="d-inline-flex align-items-center">
+
                                                         <span
-                                                            class="badge bg-success font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">INSCRITO</span>
+                                                            class="badge bg-success font-16 text-white  badge-pill ml-0 d-md-none d-lg-block">INSCRITO</span>
                                                     </div>
                                                 @endif
 
