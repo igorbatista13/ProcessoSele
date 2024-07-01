@@ -59,11 +59,12 @@
                                         <a href="{{ route('editais.show', $data->id) }}" class="btn btn-primary">Ver
                                             Edital</a>
                                         @if (!in_array($data->id, $userInscriptions))
+                                       
                                         @else
-                                            <div class="d-inline-flex align-items-center">
-                                                <span
-                                                    class="badge bg-success font-16 text-white badge-pill ml-0 d-md-none d-lg-block">INSCRITO</span>
-                                            </div>
+                                        <div class="d-inline-flex align-items-center">
+                                            <span
+                                                class="badge bg-success font-16 text-white badge-pill ml-0 d-md-none d-lg-block">INSCRITO</span>
+                                        </div>
                                         @endif
                                     </div>
                                 </div>

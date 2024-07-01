@@ -68,26 +68,50 @@
                                                 <li class="my-3">
                                                     <span><i class="icon-pencil mr-2 text-danger"></i>Texto</span>
                                                 </li>
-                                                @if (!in_array($editais->id, $userInscriptions))
-                                                    <form action="{{ route('inscricao.form', $editais->id) }}"
-                                                        method="GET">
-                                                        @csrf
-                                                   
-                                                        @auth
-                                                        <button type="submit" class="btn btn-primary">INSCREVA - SE</button>
 
-                                                        @else
-                                                        <button type="submit" class="btn btn-primary">Faça o login para se Inscrever</button>
-                                                        @endauth
-                                                    </form>
-                                                @else
-                                                    <div class="d-inline-flex align-items-center">
-
-                                                        <span
-                                                            class="badge bg-success font-16 text-white  badge-pill ml-0 d-md-none d-lg-block">INSCRITO</span>
-                                                    </div>
+                                                @if (in_array($editais->modelo_formulario_id, [1, 2, 3, 4]))
+                                                    @if (!in_array($editais->id, $userInscriptions))
+                                                        @php
+                                                            $route = '';
+                                                            switch ($editais->modelo_formulario_id) {
+                                                                case 1:
+                                                                    $route = 'inscricao1.form';
+                                                                    break;
+                                                                case 2:
+                                                                    $route = 'inscricao2.form';
+                                                                    break;
+                                                                case 3:
+                                                                    $route = 'inscricao3.form';
+                                                                    break;
+                                                                case 4:
+                                                                    $route = 'inscricao4.form';
+                                                                    break;
+                                                            }
+                                                        @endphp
+                                                        <form action="{{ route($route, $editais->id) }}" method="GET">
+                                                            @csrf
+                                                            @auth
+                                                                @if ($userProfile && $userProfile->isComplete())
+                                                                    <button type="submit"
+                                                                        class="btn btn-success text-white">INSCREVA-SE</button>
+                                                                @else
+                                                                    <button type="button" class="btn btn-warning">Preencha o
+                                                                        seu perfil para se inscrever</button>
+                                                                @endif
+                                                            @else
+                                                                <button type="submit" class="btn btn-primary">Faça o login para
+                                                                    se Inscrever</button>
+                                                            @endauth
+                                                        </form>
+                                                    @endif
                                                 @endif
 
+
+                                                @if (Carbon\Carbon::parse($editais->data_fim)->lt($today))
+                                                <button type="button" class="btn btn-danger">Encerrado</button>
+                                            @else
+                                                <button type="button" class="btn btn-warning">Em Andamento</button>
+                                            @endif
                                             </ul>
                                         </div>
                                     </div>

@@ -7,6 +7,8 @@ use App\Models\Vaga;
 use App\Models\Inscricao;
 use App\Models\Formulario;
 
+use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Auth;
 
 class EditalController extends Controller
@@ -134,14 +136,19 @@ class EditalController extends Controller
         return redirect()->route('editais.index')->with('success', 'Edital atualizado com sucesso!');
     }
 
+
+    
     public function show($id)
     {
+        $editaisVagas = Vaga::get();
         $editais = Vaga::findOrFail($id);
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
+        $userProfile = Auth::user()->perfil; // Assumindo que você tenha uma relação definida entre User e Perfil
+        $today = Carbon::today();
 
-        return view('paginas.site.show', compact('editais', 'userInscriptions'));
+        return view('paginas.site.show', compact('editais', 'userInscriptions', 'editaisVagas', 'userProfile', 'today'));
     }
-
+    
     public function formulario($id)
     {
 
@@ -152,12 +159,36 @@ class EditalController extends Controller
         //     return view('paginas.formulario.index');
     }
 
-    public function formcreate($id)
+    public function formcreate1($id)
     {
 
         $vaga = Vaga::findOrFail($id);
 
 
+
+        $editalId = $id;
+        return view('paginas.formulario.formulario1', compact('editalId', 'vaga'));
+    }
+    public function formcreate2($id)
+    {
+
+        $vaga = Vaga::findOrFail($id);
+
+        $editalId = $id;
+        return view('paginas.formulario.formulario2', compact('editalId', 'vaga'));
+    }
+    public function formcreate3($id)
+    {
+
+        $vaga = Vaga::findOrFail($id);
+
+        $editalId = $id;
+        return view('paginas.formulario.formulario3', compact('editalId', 'vaga'));
+    }
+    public function formcreate4($id)
+    {
+
+        $vaga = Vaga::findOrFail($id);
 
         $editalId = $id;
         return view('paginas.formulario.index', compact('editalId', 'vaga'));

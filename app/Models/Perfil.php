@@ -21,6 +21,43 @@ class Perfil extends Model
 
     protected $table = 'perfil';
 
+    public function isComplete()
+    {
+        // Lista de campos obrigatórios (exclua facebook e instagram)
+        $requiredFields = [
+            'nome',
+            'cpf',
+            'rg',
+            'pcd',
+          //  'sexo',
+            'escolaridade',
+            'data_nascimento',
+        //    'email',
+            'orgao',
+            'cargo',
+            'telefone',
+            'endereco',
+            'cidade',
+            'estado',
+            'CEP',
+      //      'image',
+        //    'tipo',
+        // comprovantes 
+        // anexorg - anexo cpf - anexo comprovante de endereco - anexo             
+        ];
+    
+        // Verifique se todos os campos obrigatórios estão preenchidos
+        foreach ($requiredFields as $field) {
+            if (empty($this->$field)) {
+                return false;
+            }
+        }
+    
+        return true;
+    }
+    
+
+
     public function user()
     {
         return $this->belongsTo(User::class);

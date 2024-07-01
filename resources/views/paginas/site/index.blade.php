@@ -39,7 +39,6 @@
                                         @else
                                             <span class="badge bg-success font-16 text-white  badge-pill ml-0 d-md-none d-lg-block">INSCRITO</span>
                                     
-                                    <span class="text-success">InscritoSS</span>
                         @endif
                     </div>
                 </div>

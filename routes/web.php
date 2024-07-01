@@ -26,8 +26,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('inscricao.minhasInscricoes');
     Route::post('inscricoes/{vaga}', [InscricaoController::class, 'store'])->name('inscricoes.store');
     Route::get('/minhas-inscricoes', [InscricaoController::class, 'minhasInscricoes'])->name('minhas-inscricoes');
-    Route::get('inscricao/form/{id}', [EditalController::class, 'formcreate'])->name('inscricao.form');
-
+    Route::get('inscricao/form/1/{id}', [EditalController::class, 'formcreate1'])->name('inscricao1.form');
+    Route::get('inscricao/form/2/{id}', [EditalController::class, 'formcreate2'])->name('inscricao2.form');
+    Route::get('inscricao/form/3/{id}', [EditalController::class, 'formcreate3'])->name('inscricao3.form');
+    Route::get('inscricao/form/4/{id}', [EditalController::class, 'formcreate4'])->name('inscricao4.form');
+    
     //PERFIL
     //   Route::resource('perfil', PerfilController::class)->only(['index', 'update', 'edit']);
 
