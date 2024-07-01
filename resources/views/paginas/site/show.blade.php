@@ -95,8 +95,9 @@
                                                                     <button type="submit"
                                                                         class="btn btn-success text-white">INSCREVA-SE</button>
                                                                 @else
+                                                                <a href="{{ '/perfil'}}">
                                                                     <button type="button" class="btn btn-warning">Preencha o
-                                                                        seu perfil para se inscrever</button>
+                                                                        seu perfil para se inscrever</button> </a>
                                                                 @endif
                                                             @else
                                                                 <button type="submit" class="btn btn-primary">Faça o login para

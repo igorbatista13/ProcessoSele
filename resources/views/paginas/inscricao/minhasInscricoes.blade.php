@@ -23,8 +23,7 @@
                 <div class="col-12">
                     <!-- Row -->
                     <div class="row">
-                        <!-- column -->
-                        @foreach ($inscricao as $data)
+                        @forelse ($inscricao as $data)
                             <div class="col-lg-3 col-md-6">
                                 <!-- Card -->
                                 <div class="card">
@@ -33,16 +32,24 @@
                                     <div class="card-body">
                                         <h4 class="card-title">{{ $data->vaga->titulo }}</h4>
                                         <p class="card-text">{{ $data->vaga->descricao }}</p>
-                                        <a href="{{ route('editais.show', $data->id) }}" class="btn btn-primary">Ver
-                                            Edital</a>
-                                        <a href="{{ route('editais.show', $data->id) }}" class="btn btn-warning">
-                                            Em andamento</a>
+                                        <a href="{{ route('editais.show', $data->id) }}" class="btn btn-primary">Ver Edital</a>
+                                        <a href="{{ route('editais.show', $data->id) }}" class="btn btn-warning">Em andamento</a>
                                     </div>
                                 </div>
                                 <!-- Card -->
                             </div>
-                        @endforeach
+                        @empty
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-warning">Não há inscrições</h4>
+                                        <p class="card-text">Atualmente não há inscrições registradas para o seu usuário.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforelse
                     </div>
+                    
                 </div>
             </div>
         </div>

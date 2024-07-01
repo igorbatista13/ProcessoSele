@@ -25,13 +25,13 @@ class Perfil extends Model
     {
         // Lista de campos obrigatórios (exclua facebook e instagram)
         $requiredFields = [
-            'nome',
+      //      'nome',
             'cpf',
             'rg',
-            'pcd',
+          //  'pcd',
           //  'sexo',
-            'escolaridade',
-            'data_nascimento',
+         //   'escolaridade',
+         //   'data_nascimento',
         //    'email',
             'orgao',
             'cargo',

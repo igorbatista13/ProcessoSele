@@ -27,20 +27,21 @@
     
                   
                   @if (Auth::user()->perfil && Auth::user()->perfil->image)
-                  <img src="{{asset('/images/perfil/'. Auth::user()->perfil->image)}}" alt="Profile">
+                  <img src="{{asset('/images/perfil/'. Auth::user()->perfil->image)}}" width="100px" class="rounded" alt="Profile">
                   @else
                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s" width="100px" alt="Profile" class="rounded">
               @endif
-    
-                  <h2>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h2>
+                    <p>
+                  <h3>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h3>
                   <h6>{{{ isset(Auth::user()->email) ? Auth::user()->email : Auth::user()->email }}}</h6>
+                  <h6>{{{ isset(Auth::user()->perfil->cargo) ? Auth::user()->perfil->cargo : Auth::user()->perfil->cargo }}}</h6>
                   @foreach(auth()->user()->roles as $role)
                      <h3> {{ $role->name }}</h3>
               @endforeach
     
               @if (Auth::user()->perfil && Auth::user()->perfil->Tipo)
               <h3> <b> {{Auth::user()->perfil->Tipo }} </b></h3>
-    
+            </p>
               @endif
                   <div class="social-links mt-2">
                      {{-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>  --}}
@@ -89,20 +90,20 @@
                                     <li class="nav-item">
                                         <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
                                             <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
-                                            <span class="d-none d-lg-block">Resumo</span>
+                                            <span class="d-none d-lg-block text-primary"><i class="fa fa-user fa-1x"></i>  Resumo</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#profile" data-toggle="tab" aria-expanded="true"
                                             class="nav-link">
-                                            <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
-                                            <span class="d-none d-lg-block">Editar Perfil</span>
+                                            <i class="mdi mdi-account-circle d-lg-none d-block mr-1">s</i>
+                                            <span class="d-none d-lg-block text-primary "><i class="fa fa-edit fa-1x"></i>  Editar Perfil</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
                                             <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
-                                            <span class="d-none d-lg-block">Currículo</span>
+                                            <span class="d-none d-lg-block text-primary"><i data-feather="crosshair" class="feather-icon"></i>Currículo</span>
                                         </a>
                                     </li>
                                 </ul>

@@ -28,6 +28,7 @@ return new class extends Migration
             $table->date('data_inicio')->nullable();
             $table->date('data_fim')->nullable();
             $table->string('status')->nullable();
+            $table->string('novostatus')->nullable();
             $table->string('etapa')->nullable();
             $table->timestamps();
         });

@@ -11,6 +11,7 @@ use App\Http\Controllers\CurriculoController;
 use App\Http\Controllers\PainelController;
 use App\Http\Controllers\EditalController;
 use App\Http\Controllers\QuestaoController;
+use App\Http\Controllers\AuditsController;
 
 
 Route::middleware(['auth'])->group(function () {
@@ -43,6 +44,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('documentos', DocumentoController::class)->only(['store']);
     // Curriculo
     Route::resource('curriculos', CurriculoController::class)->only(['store']);
+
+    // Auditoria
+    Route::get('audits', [AuditsController::class, 'index'])->name('audits.index');
+
 
     // QUESTOES
     Route::prefix('questoes')->group(function () {

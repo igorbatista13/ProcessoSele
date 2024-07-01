@@ -39,4 +39,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Curriculo::class);
     }
+    public function comments()
+    {
+        return $this->morphMany('App\Comment', 'commentable');
+    }
 }
