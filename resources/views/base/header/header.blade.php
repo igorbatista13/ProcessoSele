@@ -26,6 +26,55 @@
 <![endif]-->
 </head>
 
+<style>
+
+    .card-img-top {
+      width: 60%;
+      border-radius: 10%;
+      margin: 0 auto;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    }
+    .card-img-top1 {
+      width: 60%;
+      border-radius: 50%;
+      margin: 0 auto;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    }
+    .card {
+      padding: 1.5em 0.5em 0.5em;
+      text-align: center;
+      border-radius: 2em;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .my-3 {
+        text-align: left !important;
+    }
+    .card-title {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    .btn-primary {
+      border-radius: 2em;
+      padding: 0.5em 1.5em;
+    }
+    .btn-warning {
+      border-radius: 2em;
+      padding: 0.5em 1.5em;
+    }
+    .btn-light {
+      border-radius: 2em;
+      padding: 0.5em 1.5em;
+    }
+    .btn-danger {
+      border-radius: 2em;
+      padding: 0.5em 1.5em;
+    }
+    .btn-success {
+      border-radius: 2em;
+      padding: 0.5em 1.5em;
+    }
+    </style>
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->

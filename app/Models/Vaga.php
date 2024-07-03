@@ -25,4 +25,9 @@ class Vaga extends Model implements AuditableContract
     {
         return $this->hasMany(Inscricao::class);
     }
+
+    public function formulario()
+    {
+        return $this->belongsTo(Formulario::class, 'modelo_formulario_id');
+    }
 }

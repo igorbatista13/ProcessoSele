@@ -1,5 +1,7 @@
 @extends('base.header.header')
 @section('content')
+
+
     <div class="page-wrapper">
         <div class="container-fluid">
             <!-- Row -->
@@ -15,7 +17,7 @@
                 </div>
             </div>
 
-    
+     
     
     
         <section class="section profile">
@@ -24,20 +26,28 @@
     
               <div class="card">
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-    
+                    <div class="casrd" style="width: 18rem;">
+                        @if (Auth::user()->perfil && Auth::user()->perfil->image)
+                        <img src="{{asset('/images/perfil/'. Auth::user()->perfil->image)}}" width="100px" class="card-img-top1" alt="Profile">
+                        @else
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s" width="100px" class="card-img-top1" alt="Profile">
+                    @endif
+                        {{-- <img src="https://codingyaar.com/wp-content/uploads/bootstrap-profile-card-image.jpg" class="card-img-top" alt="..."> --}}
+                        <div class="card-body">
+                          <h5 class="card-title">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h5>
+                          <p class="card-text">{{{ isset(Auth::user()->email) ? Auth::user()->email : Auth::user()->email }}}</p>
+                          <p class="card-text">{{{ isset(Auth::user()->email) ? Auth::user()->email : Auth::user()->email }}}</p>
+                          <p class="card-text">{{{ isset(Auth::user()->perfil->cargo) ? Auth::user()->perfil->cargo : Auth::user()->perfil->cargo }}} </p>
+                          @foreach(auth()->user()->roles as $role)
+                          <h3> {{ $role->name }}</h3>
+                   @endforeach
+                          <a href="" class="btn btn-primary">Know More</a>
+                        </div>
+                      </div>
                   
-                  @if (Auth::user()->perfil && Auth::user()->perfil->image)
-                  <img src="{{asset('/images/perfil/'. Auth::user()->perfil->image)}}" width="100px" class="rounded" alt="Profile">
-                  @else
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s" width="100px" alt="Profile" class="rounded">
-              @endif
+              
                     <p>
-                  <h3>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h3>
-                  <h6>{{{ isset(Auth::user()->email) ? Auth::user()->email : Auth::user()->email }}}</h6>
-                  <h6>{{{ isset(Auth::user()->perfil->cargo) ? Auth::user()->perfil->cargo : Auth::user()->perfil->cargo }}}</h6>
-                  @foreach(auth()->user()->roles as $role)
-                     <h3> {{ $role->name }}</h3>
-              @endforeach
+                 
     
               @if (Auth::user()->perfil && Auth::user()->perfil->Tipo)
               <h3> <b> {{Auth::user()->perfil->Tipo }} </b></h3>
@@ -49,26 +59,21 @@
                         <a href="https://facebook.com/{{Auth::user()->perfil->Facebook}}" target="_blank" class="f-icon">
                             <i class="fab fa-facebook fa-2x"></i>
                         </a>
-                     @else
-                        <a href="" class="f-icon"><i class="fab fa-facebook fa-2x"></i>
-                           </a>
+                   
                      @endif
     
                      @if (Auth::user()->perfil && Auth::user()->perfil->Instagram)
                         <a href="https://instagram.com/{{Auth::user()->perfil->Instagram}}" target="_blank" class="f-icon">
                             <i class="fab fa-instagram fa-2x"></i>
                         </a>
-                     @else
-                        <a href="" class="f-icon">
-                            <i class="fab fa-instagram fa-2x"></i></a>
+                    
                      @endif
     
                      @if (Auth::user()->perfil && Auth::user()->perfil->Linkedin)
                         <a href="https://linkedin.com/{{Auth::user()->perfil->Linkedin}}" target="_blank" class="f-icon">
                             <i class="fab fa-linkedin fa-2x"></i>
                         </a>
-                     @else
-                        <a href="" class="f-icon"><i class="fab fa-linkedin fa-2x"></i></a>
+                   
                      @endif
     
     

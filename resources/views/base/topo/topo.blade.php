@@ -11,6 +11,7 @@
             <a href="{{ asset('/') }}">
                 <b class="logo-icon">
                     <!-- Dark Logo icon -->
+                    
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s"
                         width="80px" class="dark-logo" />
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s"

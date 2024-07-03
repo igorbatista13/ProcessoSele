@@ -43,7 +43,6 @@
 
                 @foreach ($inscricao as $data)
                     <div class="col-lg-3 col-md-12">
-                        <div class="card">
                             <div class="card-body">
                                 <!-- Card -->
                                 <div class="card">
@@ -54,7 +53,7 @@
                                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s"
                                         alt="Card image cap" width="100px">
                                     <div class="card-body">
-                                        <h4 class="card-title">{{ $data->titulo }}</h4>
+                                        <h5 class="card-title">{{ $data->titulo }}</h5>
                                         <p class="card-text">{{ $data->descricao }}</p>
                                         <a href="{{ route('editais.show', $data->id) }}" class="btn btn-primary">Ver
                                             Edital</a>
@@ -70,7 +69,6 @@
                                 </div>
                                 <!-- Card -->
                             </div>
-                        </div>
                     </div>
                 @endforeach
 

@@ -25,36 +25,35 @@ class EditalController extends Controller
     public function index()
     {
         $status = 'Todos';
-        $editais = Vaga::paginate(10);
+        $modeloformulario = Formulario::get();
+       // $editais = Vaga::paginate(10);
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
+        $editais = Vaga::with('formulario')->paginate(10); // Carrega a relação formulário
 
-        return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status'));
+        return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status','modeloformulario'));
     }
     public function editaisativos()
     {
         $status = 'ATIVOS';
-        $editais = Vaga::where('status', '=', 'Ativo')->paginate(10);
+        $modeloformulario = Formulario::get();
+     //   $editais = Vaga::where('status', '=', 'Ativo')->paginate(10);
+        $editais = Vaga::with('formulario')->where('status', '=', 'Ativo')->paginate(10); // Carrega a relação formulário
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
-        return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status'));
+        return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status', 'modeloformulario'));
     }
     public function editaisinativos()
     {
         $status = 'INATIVOS';
+        $modeloformulario = Formulario::get();
+
         $editais = Vaga::where('status', '=', 'Encerrado')->paginate(10);
+        $editais = Vaga::with('formulario')->where('status', '=', 'Encerrado')->paginate(10); // Carrega a relação formulário
+
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
-        return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status'));
+        return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status','modeloformulario'));
     }
-
-
-    public function create()
-    {
-        $modeloformulario = Formulario::get();
-        return view('paginas.editais.create', compact('modeloformulario'));
-    }
-
-
 
 
     public function store(Request $request)
@@ -94,12 +93,6 @@ class EditalController extends Controller
         return back();
     }
 
-    public function edit($id)
-    {
-        $editais = Vaga::findOrFail($id);
-        return view('paginas.editais.edit', compact('editais'));
-    }
-
 
     public function update(Request $request, $id)
     {
@@ -119,33 +112,44 @@ class EditalController extends Controller
             'data_fim' => 'required|date',
             'status' => 'required',
         ]);
-
+    
         $editais = Vaga::findOrFail($id);
-        $editais->update($request->all());
-
+        $editais->fill($request->except(['image', 'anexo1']));
+    
         if ($request->hasFile('image')) {
             $editais->image = $request->file('image')->store('images');
         }
-
+    
         if ($request->hasFile('anexo1')) {
             $editais->anexo1 = $request->file('anexo1')->store('anexos');
         }
-
+    
         $editais->save();
-
-        return redirect()->route('editais.index')->with('success', 'Edital atualizado com sucesso!');
+    
+        return back()->with('success', 'Edital atualizado com sucesso!');
     }
-
+    
 
     
     public function show($id)
     {
-        $editaisVagas = Vaga::get();
-        $editais = Vaga::findOrFail($id);
-        $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
-        $userProfile = Auth::user()->perfil; // Assumindo que você tenha uma relação definida entre User e Perfil
+        // Busca os dados de Vaga
+        $editaisVagas = Vaga::with('formulario')->get(); // Carrega também os dados de formulario
+        $editais = Vaga::with('formulario')->findOrFail($id); // Carrega também os dados de formulario específico
+    
+        // Verifica se o usuário está autenticado
+        if (Auth::check()) {
+            $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
+            $userProfile = Auth::user()->perfil; // Assumindo que você tenha uma relação definida entre User e Perfil
+        } else {
+            $userInscriptions = [];
+            $userProfile = null;
+        }
+    
+        // Define a data atual
         $today = Carbon::today();
-
+    
+        // Retorna a view com os dados necessários
         return view('paginas.site.show', compact('editais', 'userInscriptions', 'editaisVagas', 'userProfile', 'today'));
     }
     
@@ -191,6 +195,6 @@ class EditalController extends Controller
         $vaga = Vaga::findOrFail($id);
 
         $editalId = $id;
-        return view('paginas.formulario.index', compact('editalId', 'vaga'));
+        return view('paginas.formulario.formulario4', compact('editalId', 'vaga'));
     }
 }

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('email')->nullable();                    
             $table->string('orgao')->nullable();
             $table->string('cargo')->nullable();
+            $table->string('lotacao')->nullable();
             $table->string('telefone')->nullable();
         // Endereço pessoal
             $table->string('endereco')->nullable();

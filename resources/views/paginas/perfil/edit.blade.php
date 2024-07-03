@@ -15,8 +15,7 @@
                 <div class="pt-2">
                     <input type="file" class="form-control" id="image" name="image">
 
-                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"> X <i
-                            class="bi bi-trash"></i></a>
+                 
                 </div>
             </div>
         </div>

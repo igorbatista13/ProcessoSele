@@ -3,16 +3,26 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\VagaController;
-use App\Http\Controllers\PerfilController;
-use App\Http\Controllers\InscricaoController;
-use App\Http\Controllers\DocumentoController;
-use App\Http\Controllers\CurriculoController;
-use App\Http\Controllers\PainelController;
-use App\Http\Controllers\EditalController;
-use App\Http\Controllers\QuestaoController;
-use App\Http\Controllers\AuditsController;
 
+
+use App\Http\Controllers\{
+
+    VagaController,
+    PerfilController,
+    InscricaoController,
+    DocumentoController,
+    CurriculoController,
+    
+    PainelController,
+    EditalController,
+    QuestaoController,
+    AuditsController,
+    FaqController,
+    FormularioModeloController,
+    UserController,
+    RoleController
+ 
+  };
 
 Route::middleware(['auth'])->group(function () {
     //Editais
@@ -47,6 +57,19 @@ Route::middleware(['auth'])->group(function () {
 
     // Auditoria
     Route::get('audits', [AuditsController::class, 'index'])->name('audits.index');
+
+    // Modelo Formulario (1 a 4)
+    Route::resource('modeloformulario', FormularioModeloController::class)->only(['index', 'create', 'edit', 'store', 'update']);
+
+    // FAQ
+    Route::resource('faq', FaqController::class)->only(['index', 'create', 'edit', 'store', 'update', 'destroy']);
+
+    // Usuários
+    Route::resource('usuarios', UserController::class);
+
+    // Perfil / Regras
+    Route::resource('roles',                     RoleController::class);
+
 
 
     // QUESTOES

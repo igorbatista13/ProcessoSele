@@ -11,15 +11,16 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">PROCESSOS SELETIVOS / EDITAIS  - 
-                                <b class="text-muted">{{$status}}</h4>
+                            <h4 class="card-title">PROCESSOS SELETIVOS / EDITAIS  
+                                <b class="text-muted"></h4>
                             <h6 class="card-subtitle">
 
-                                <a class="sidebar-link" href="{{ asset('/editais/create') }}" aria-expanded="false">
-                                    <i data-feather="tag" class="feather-icon"> </i>
-                                    <span class="hide-menu"> Novo
-                                    </span>
-                                </a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditalCreate">
+                                    <i class="icon-plus mr-2 text-light"></i> Novo
+                                </button>
+                                @include ('paginas/editais/create')
+
+                     
                             </h6>
                             {{-- 'ano',     'titulo',        'cidade',
                             'estado',   'local',        'cargo',
@@ -35,6 +36,8 @@
                                             <th>ID</th>
                                             <th>Ano</th>
                                             <th>Título</th>
+                                            <th>Etapa</th>
+                                            <th>Modelo</th>
                                             <th>Status</th>
                                             <th></th>
                                         </tr>
@@ -45,14 +48,14 @@
                                                 <td>{{ $data->id }}</td>
                                                 <td>{{ $data->ano }}</td>
                                                 <td>{{ $data->titulo }}</td>
+                                                <td>{{ $data->etapa }}</td>
+                                                <td><b> {{ $data->formulario->id }} </b>  - {{ $data->formulario->nome }}</td>
                                                 <td>{{ $data->status }} </td>
                                                 <td>
-                                                    <a class="sidebar-link" href="{{ route('editais.edit', $data->id) }}"
-                                                        aria-expanded="false">
-                                                        <i data-feather="tag" class="feather-icon"> </i>
-                                                        <span class="hide-menu">Editar
-                                                        </span>
-                                                    </a>
+                                                    <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#editar_{{ $data->id }}">
+                                                        <i class="icon-pencil mr-2 "></i> Editar
+                                                    </button>  
+                                                    @include ('paginas/editais/edit')
                                                 </td>
                                             </tr>
 

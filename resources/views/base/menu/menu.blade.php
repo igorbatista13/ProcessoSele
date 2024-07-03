@@ -38,6 +38,12 @@
                                     </span>
                                 </a>
                             </li>
+                            <li class="sidebar-item">
+                                <a href="{{ asset('/modeloformulario') }}" class="sidebar-link">
+                                    <span class="hide-menu "> Modelos de Formulario
+                                    </span>
+                                </a>
+                            </li>
 
 
                         </ul>
@@ -47,6 +53,8 @@
                     {{-- Documentos
                 Editais
                 Inscrições --}}
+
+                
 
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                             aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
@@ -64,14 +72,39 @@
                         </ul>
                     </li>
    
+                    <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                        aria-expanded="false"><i data-feather="user" class="feather-icon"></i><span
+                            class="hide-menu">Usuários </span></a>
 
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        <li class="sidebar-item"><a href="{{ asset('/usuarios') }}" class="sidebar-link"><span
+                                    class="hide-menu"> Usuários do Sistema
+                                </span></a>
+                        </li>
+                        <li class="sidebar-item"><a href="{{ asset('/roles') }}" class="sidebar-link"><span
+                                    class="hide-menu"> Perfil 
+                                </span></a>
+                        </li>
+
+                    </ul>
+                </li>
 
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/audits') }}"
                             aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
                                 class="hide-menu">Auditoria</span></a></li>
 
 
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/configuracoes') }}"
+                            aria-expanded="false"><i data-feather="settings" class="feather-icon"></i><span
+                                class="hide-menu">Configurações</span></a></li>
 
+
+
+
+
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/faq') }}"
+                            aria-expanded="false"><i data-feather="help-circle" class="feather-icon"></i><span
+                                class="hide-menu">FAQ</span></a></li>
 
 
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
