@@ -36,12 +36,12 @@
                         <div class="card-body">
                           <h5 class="card-title">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h5>
                           <p class="card-text">{{{ isset(Auth::user()->email) ? Auth::user()->email : Auth::user()->email }}}</p>
-                          <p class="card-text">{{{ isset(Auth::user()->email) ? Auth::user()->email : Auth::user()->email }}}</p>
                           <p class="card-text">{{{ isset(Auth::user()->perfil->cargo) ? Auth::user()->perfil->cargo : Auth::user()->perfil->cargo }}} </p>
-                          @foreach(auth()->user()->roles as $role)
-                          <h3> {{ $role->name }}</h3>
-                   @endforeach
-                          <a href="" class="btn btn-primary">Know More</a>
+                          <p class="card-text">{{{ isset(Auth::user()->role) ? Auth::user()->role : Auth::user()->role }}} </p>
+                          {{-- @foreach(auth()->user()->roles as $role)
+                          <p> {{ $role->name }}</p>
+                   @endforeach --}}
+                          <a href="" class="btn btn-primary">Botão</a>
                         </div>
                       </div>
                   

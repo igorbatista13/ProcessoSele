@@ -57,8 +57,7 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
     
-        return redirect()->route('roles.index')
-                        ->with('success','Perfil Criado com sucesso!');
+        return back()->with('success','Perfil Criado com sucesso!');
     }
     /**
      * Display the specified resource.
@@ -77,32 +76,7 @@ class RoleController extends Controller
     
         return view('roles.show',compact('role','rolePermissions', 'userCount'));
     }
-    
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
- 
-        $role = Role::find($id);
-        $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
-            ->all();
-    
-        return view('paginas.roles.edit',compact('role','permission','rolePermissions',));
-    }
-    
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -116,19 +90,7 @@ class RoleController extends Controller
     
         $role->syncPermissions($request->input('permission'));
     
-        return redirect()->route('roles.index')
-                        ->with('success','Perfil atualizado com sucesso!');
+        return back()->with('success','Perfil atualizado com sucesso!');
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('roles.index')
-                        ->with('success','Perfil deletado com sucesso!');
-    }
+
 }
