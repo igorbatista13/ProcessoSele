@@ -9,22 +9,21 @@ use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
 use Illuminate\Support\Arr;
-use App\Models\FICHA;
 
     
 class UserController extends Controller
 {
-    // function __construct()
-    // {
-    //      $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','store']]);
-    //      $this->middleware('permission:user-create', ['only' => ['create','store']]);
-    //      $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
-    //      $this->middleware('permission:user-delete', ['only' => ['destroy']]);
-    // }
+    //  function __construct()
+    //  {
+    //       $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','store']]);
+    //       $this->middleware('permission:user-create', ['only' => ['create','store']]);
+    //       $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+    //       $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    //  }
     public function index(Request $request)
     {
        
-        $data = User::orderBy('id','DESC')->paginate(5);
+        $data = User::with('perfil')->orderBy('id','DESC')->paginate(10);
         $roles = Role::pluck('name','name')->all();
 
         return view('paginas.users.index',compact('data','roles'))
@@ -36,13 +35,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-
-        $roles = Role::pluck('name','name')->all();
-        return view('paginas.users.create',compact('roles'));
-    }
-    
+  
     /**
      * Store a newly created resource in storage.
      *
@@ -64,46 +57,9 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('users.index')
-                        ->with('success','Usuário criado com sucesso!');
+        return back()->with('success','Usuário criado com sucesso!');
     }
     
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $user = User::find($id);
-        return view('paginas.users.show',compact('user'));
-    }
-    
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-     {
-    //     $userCount  =  FICHA::where('status_id', '=', auth()->id())
-    //     ->count(); 
-        $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
-    
-        return view('paginas.users.edit',compact('user','roles','userRole',));
-    }
-    
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -126,20 +82,7 @@ class UserController extends Controller
     
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('users.index')
-                        ->with('edit','Usuário Atualizado com sucesso!');
+        return back()->with('edit','Usuário Atualizado com sucesso!');
     }
-    
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        User::find($id)->delete();
-        return redirect()->route('users.index')
-                        ->with('delete','Usuário deletado com sucesso!');
-    }
+
 }

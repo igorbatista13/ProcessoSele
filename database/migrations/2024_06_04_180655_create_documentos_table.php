@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('tipo');
-            $table->string('arquivo');
+      //      $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('vagas_id')->constrained()->onDelete('cascade');
+            $table->string('nome');
+            $table->string('tipo_arquivo')->nullable();
+            $table->string('modelo_arquivo')->nullable();
+            $table->string('anexo')->nullable();
+            $table->date('data_inicio')->nullable();
+            $table->date('data_fim')->nullable();
+
             $table->timestamps();
         });
     }

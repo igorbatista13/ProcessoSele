@@ -12,11 +12,11 @@ class Perfil extends Model
     protected $fillable = [
         'user_id', 'nome', 'cpf',
         'rg', 'pcd', 'sexo', 'escolaridade',
-        'data_nascimento', 'email', 'Orgao',
-        'Cargo', 'Endereco', 'Cidade',
-        'Estado', 'CEP', 'Telefone',
-        'Facebook', 'Instagram', 'Linkedin',
-        'Site', 'image', 'tipo',
+        'data_nascimento', 'email', 'orgao',
+        'cargo', 'endereco', 'cidade',
+        'estado', 'CEP', 'telefone',
+        'facebook', 'instagram', 'linkedin',
+        'site', 'image', 'tipo',
     ];
 
     protected $table = 'perfil';

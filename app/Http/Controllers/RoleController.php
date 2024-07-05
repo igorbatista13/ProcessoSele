@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
-use App\Models\FICHA;
-
     
 class RoleController extends Controller
 {
@@ -24,6 +22,7 @@ class RoleController extends Controller
     //      $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     // }
     
+
     /**
      * Display a listing of the resource.
      *
@@ -31,15 +30,30 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-
         $roles = Role::get();
         $permissions = Permission::get();
 
-        return view('paginas.roles.index',compact('roles', 'permissions'));
+
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id")
+            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+            ->all();
+
+
+        return view('paginas.roles.index',compact('roles', 'permissions','rolePermissions'));
           
     }
     
-
+    public function edit($id)
+    {
+ 
+        $role = Role::find($id);
+        $permission = Permission::get();
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
+            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+            ->all();
+    
+        return view('paginas.roles.aedit',compact('role','permission','rolePermissions',));
+    }
     
     /**
      * Store a newly created resource in storage.
@@ -51,13 +65,13 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:roles,name',
-            'permission' => 'required',
+            'permissions' => 'required',
         ]);
-    
+
         $role = Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
-    
-        return back()->with('success','Perfil Criado com sucesso!');
+        $role->syncPermissions($request->input('permissions'));
+
+        return back()->with('success', 'Perfil Criado com sucesso!');
     }
     /**
      * Display the specified resource.

@@ -28,7 +28,7 @@ class EditalController extends Controller
         $modeloformulario = Formulario::get();
        // $editais = Vaga::paginate(10);
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
-        $editais = Vaga::with('formulario')->paginate(10); // Carrega a relação formulário
+        $editais = Vaga::with('formulario','documentos')->paginate(10); // Carrega a relação formulário
 
         return view('paginas.editais.index', compact('editais', 'userInscriptions', 'status','modeloformulario'));
     }

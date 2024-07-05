@@ -56,10 +56,14 @@
                     <a class="dropdown-item" href="{{ asset('/logout') }}"><i data-feather="power"
                             class="svg-icon mr-2 ml-1"></i>
                         Sair</a>
-                    <div class="dropdown-divider"></div>
-                    <div class="pl-4 p-3"><a href="{{ asset('/faq') }}" class="btn btn-sm btn-info">Dúvidas?</a>
-                    </div>
-                </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="row">
+                            <div class="d-flex pl-4 p-3">
+                                <a href="{{ asset('/faq/show') }}" class="btn btn-sm btn-warning mr-2">Dúvidas?</a>
+                                <a href="{{ asset('/suporte') }}" class="btn btn-sm btn-primary">Suporte</a>
+                            </div>
+                        </div>
+                        
             @else
                 <span class="text-dark"></span>
                 <i data-feather="chevron-down" class="svg-icon"></i>

@@ -11,16 +11,18 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">PROCESSOS SELETIVOS / EDITAIS  
-                                <b class="text-muted"></h4>
+                            <h4 class="card-title">PROCESSOS SELETIVOS / EDITAIS
+                                <b class="text-muted">
+                            </h4>
                             <h6 class="card-subtitle">
 
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditalCreate">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#EditalCreate">
                                     <i class="icon-plus mr-2 text-light"></i> Novo
                                 </button>
                                 @include ('paginas/editais/create')
 
-                     
+
                             </h6>
                             {{-- 'ano',     'titulo',        'cidade',
                             'estado',   'local',        'cargo',
@@ -39,6 +41,7 @@
                                             <th>Etapa</th>
                                             <th>Modelo</th>
                                             <th>Status</th>
+                                            <th>Documentos</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -49,12 +52,29 @@
                                                 <td>{{ $data->ano }}</td>
                                                 <td>{{ $data->titulo }}</td>
                                                 <td>{{ $data->etapa }}</td>
-                                                <td><b> {{ $data->formulario->id }} </b>  - {{ $data->formulario->nome }}</td>
+                                                <td><b> {{ $data->formulario->id }} </b> - {{ $data->formulario->nome }}
+                                                </td>
                                                 <td>{{ $data->status }} </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#editar_{{ $data->id }}">
+                                             
+                                                    
+                                                    <button type="button" class="btn btn-success " data-toggle="modal"
+                                                        data-target="#inserir_{{ $data->id }}">
+                                                        <i class="icon-pencil mr-2 "></i> Inserir Documento
+                                                    </button>
+                                                    @include ('paginas/editais/createdoc')
+
+                                                    <button type="button" class="btn btn-light " data-toggle="modal"
+                                                        data-target="#verdoc_{{ $data->id }}">
+                                                        <i class="icon-eye mr-2 "></i> Ver
+                                                    </button>
+                                                    @include ('paginas/editais/verdoc')
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning " data-toggle="modal"
+                                                        data-target="#editar_{{ $data->id }}">
                                                         <i class="icon-pencil mr-2 "></i> Editar
-                                                    </button>  
+                                                    </button>
                                                     @include ('paginas/editais/edit')
                                                 </td>
                                             </tr>

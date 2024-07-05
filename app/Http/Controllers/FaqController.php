@@ -28,6 +28,10 @@ class FaqController extends Controller
         return back();
     }
 
+    public function show() {
+        $faq = Faq::get();
+        return view('paginas.faq.show',compact ('faq'));
+    }
 
     public function update(Request $request, $id)
     {

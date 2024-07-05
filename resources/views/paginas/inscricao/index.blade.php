@@ -1,15 +1,23 @@
 @extends('base.header.header')
 
 @section('content')
-    <div class="page-wrapper">
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-7 align-self-center">
-                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Inscritos</h4>
-                </div>
 
-            </div>
-        </div>
+<div class="page-wrapper">
+
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">PROCESSOS SELETIVOS / EDITAIS
+                            <b class="text-muted">
+                        </h4>
+                        <h6 class="card-subtitle">
+
+                        
 
         <div class="container-fluid">
             <div class="row">

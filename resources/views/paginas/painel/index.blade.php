@@ -53,8 +53,20 @@
                                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQypzZmOZTGyNqKwyz-cArUPA3a1AIwxOfxUw&s"
                                         alt="Card image cap" width="100px">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $data->titulo }}</h5>
-                                        <p class="card-text">{{ $data->descricao }}</p>
+                                        <h5 class="card-title">{{ \Illuminate\Support\Str::limit($data->titulo, 30) }}</h5>
+
+                                        <p class="card-text">{{ \Illuminate\Support\Str::limit($data->descricao, 40) }}</p>
+
+                                        <p>  <span><i class="fa fa-calendar mr-2 text-success"></i> <b> Data Início: </b>
+                                        {{ $data->data_inicio }}</span>
+                                    </p>
+                                        <p>  <span><i class="fa fa-calendar mr-2 text-danger"></i> <b> Data Fim: </b>
+                                        {{ $data->data_fim }}</span>
+                                    </p>
+
+
+                         
+                                 
                                         <a href="{{ route('editais.show', $data->id) }}" class="btn btn-primary">Ver
                                             Edital</a>
                                         @if (!in_array($data->id, $userInscriptions))

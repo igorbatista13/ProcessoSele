@@ -4,12 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Auditable;
 
-class Inscricao extends Model
+class Inscricao extends Model implements AuditableContract
+
 {
     use HasFactory;
 
     protected $fillable = ['user_id', 'vaga_id', 'motivo', 'status'];
+    use Auditable;
 
     public function user()
     {

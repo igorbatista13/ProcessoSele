@@ -36,7 +36,7 @@
                         <div class="card-body">
                           <h5 class="card-title">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</h5>
                           <p class="card-text">{{{ isset(Auth::user()->email) ? Auth::user()->email : Auth::user()->email }}}</p>
-                          <p class="card-text">{{{ isset(Auth::user()->perfil->cargo) ? Auth::user()->perfil->cargo : Auth::user()->perfil->cargo }}} </p>
+                          <p class="card-text">{{{ isset(Auth::user()->perfil->cargo) ?? '' }}} </p>
                           <p class="card-text">{{{ isset(Auth::user()->role) ? Auth::user()->role : Auth::user()->role }}} </p>
                           {{-- @foreach(auth()->user()->roles as $role)
                           <p> {{ $role->name }}</p>
@@ -55,22 +55,22 @@
               @endif
                   <div class="social-links mt-2">
                      {{-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>  --}}
-                     @if (Auth::user()->perfil && Auth::user()->perfil->Facebook)
-                        <a href="https://facebook.com/{{Auth::user()->perfil->Facebook}}" target="_blank" class="f-icon">
+                     @if (Auth::user()->perfil && Auth::user()->perfil->facebook)
+                        <a href="https://facebook.com/{{Auth::user()->perfil->facebook}}" target="_blank" class="f-icon">
                             <i class="fab fa-facebook fa-2x"></i>
                         </a>
                    
                      @endif
     
-                     @if (Auth::user()->perfil && Auth::user()->perfil->Instagram)
-                        <a href="https://instagram.com/{{Auth::user()->perfil->Instagram}}" target="_blank" class="f-icon">
+                     @if (Auth::user()->perfil && Auth::user()->perfil->instagram)
+                        <a href="https://instagram.com/{{Auth::user()->perfil->instagram}}" target="_blank" class="f-icon">
                             <i class="fab fa-instagram fa-2x"></i>
                         </a>
                     
                      @endif
     
-                     @if (Auth::user()->perfil && Auth::user()->perfil->Linkedin)
-                        <a href="https://linkedin.com/{{Auth::user()->perfil->Linkedin}}" target="_blank" class="f-icon">
+                     @if (Auth::user()->perfil && Auth::user()->perfil->linkedin)
+                        <a href="https://linkedin.com/{{Auth::user()->perfil->linkedin}}" target="_blank" class="f-icon">
                             <i class="fab fa-linkedin fa-2x"></i>
                         </a>
                    
@@ -106,6 +106,13 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
+                                        <a href="#anexos" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                            <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
+                                            <span class="d-none d-lg-block text-primary"><i data-feather="folder" class="feather-icon"></i>Documentos</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
                                         <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
                                             <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
                                             <span class="d-none d-lg-block text-primary"><i data-feather="crosshair" class="feather-icon"></i>Currículo</span>
@@ -117,6 +124,7 @@
 
                                     @include('paginas.perfil.resumo')
                                     @include('paginas.perfil.edit')
+                                    @include('paginas.perfil.anexos')
                                     @include('paginas.perfil.curriculo')
                                 
                                 </div>

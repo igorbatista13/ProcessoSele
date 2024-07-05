@@ -89,14 +89,37 @@
                     </ul>
                 </li>
 
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/audits') }}"
-                            aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
-                                class="hide-menu">Auditoria</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                    aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span
+                        class="hide-menu">Auditoria </span></a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a href="{{ asset('/audits/editais') }}" class="sidebar-link"><span
+                                class="hide-menu"> Edital
+                            </span></a>
+                    </li>
+                    <li class="sidebar-item"><a href="{{ asset('/audits/inscricoes') }}" class="sidebar-link"><span
+                                class="hide-menu"> Inscrições
+                            </span></a>
+                    </li>
+                    <li class="sidebar-item"><a href="{{ asset('/audits/users') }}" class="sidebar-link"><span
+                                class="hide-menu"> Usuários
+                            </span></a>
+                    </li>
 
+                </ul>
+            </li>
+
+
+                 
 
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/configuracoes') }}"
                             aria-expanded="false"><i data-feather="settings" class="feather-icon"></i><span
                                 class="hide-menu">Configurações</span></a></li>
+
+
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/suporte') }}"
+                            aria-expanded="false"><i data-feather="coffee" class="feather-icon"></i><span
+                                class="hide-menu">Suporte</span></a></li>
 
 
 
