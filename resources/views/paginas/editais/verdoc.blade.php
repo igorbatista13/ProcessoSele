@@ -30,6 +30,15 @@
                                         <td>  {{ $documento->nome }} </td>
                                         <td>  {{ $documento->tipo_arquivo }} </td>
                                         <td>  {{ $documento->anexo }} </td>
+                                        <td>  <a href="{{ asset('storage/' . $documento->anexo) }}" target="_blank">Ver arquivo :) </a>
+                                        </td>
+                                        <td>  <a class="btn btn-primary"
+                                            href="{{ asset('storage/app/public/' . $documento->anexo) }}"
+                                            target="_blank">
+                                            <i class="bi bi-file-earmark-pdf-fill">
+                                            </i> Ver arquivo
+                                        </a> </td>
+
                         </tbody>
                         @endforeach
                     </table>

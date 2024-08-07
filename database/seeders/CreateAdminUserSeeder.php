@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use App\Models\User;
+use App\Models\Perfil;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -20,60 +21,24 @@ class CreateAdminUserSeeder extends Seeder
     {
         //Admin Seeder
         $user = User::create([
-            'name' => 'Igor Batista', 
+            'name' => 'Igor Batista',
             'email' => 'igor.batista@edu.mt.gov.br',
-            'password' => bcrypt('s3duc@@2323')
+            'password' => bcrypt('cavalo23')
         ]);
-      
 
-      
-        $role = Role::create(['name' => 'Admin']);
-        $role = Role::create(['name' => 'DRE1']);
-        $role = Role::create(['name' => 'DRE2']);
-        $role = Role::create(['name' => 'DRE3']);
-        $role = Role::create(['name' => 'DRE4']);
-        $role = Role::create(['name' => 'DRE5']);
-        $role = Role::create(['name' => 'DRE6']);
-        $role = Role::create(['name' => 'DRE7']);
-        $role = Role::create(['name' => 'DRE8']);
-        $role = Role::create(['name' => 'DRE9']);
-        $role = Role::create(['name' => 'DRE10']);
-        $role = Role::create(['name' => 'DRE11']);
-        $role = Role::create(['name' => 'DRE12']);
-        $role = Role::create(['name' => 'DRE13']);
+        $perfil = Perfil::create([
+            'user_id' => '1',
+            'nome' => 'IGOR',
 
-       
-        $permissions = Permission::pluck('id','id')->all();
-     
+        ]);
+
+
+        $role = Role::create(['name' => 'Admin', 'DRE1', 'DRE2', 'DRE3', 'DRE4', 'DRE5', 'DRE6', 'DRE7', 'DRE8', 'DRE9', 'DRE10', 'DRE11', 'DRE12', 'DRE13']);
+    
+        $permissions = Permission::pluck('id', 'id')->all();
+
         $role->syncPermissions($permissions);
-        
+
         $user->assignRole([$role->id]);
-
-        // $user = User::create([
-        //     'name' => 'Dayane Freitas Coelho', 
-        //     'email' => 'dayane.coelho@edu.mt.gov.br',
-        //     'password' => bcrypt('seduc@123')
-        // ]);
-        // $user = User::create([
-        //     'name' => 'Lizia Soares Penido', 
-        //     'email' => 'lizia.penido@edu.mt.gov.br',
-        //     'password' => bcrypt('seduc@123')
-        // ]);
-        // $user = User::create([
-        //     'name' => 'Thais Marques dos Reis', 
-        //     'email' => 'thais.marques@edu.mt.gov.br',
-        //     'password' => bcrypt('seduc@123')
-        // ]);
-
-        // $role = Role::create(['name' => 'seduc']);
-
-        // $permissions = Permission::pluck('id','id')->all();
-     
-        // $role->syncPermissions($permissions);
-        
-        // $user->assignRole([$role->id]);
-
-
     }
-
-    }
+}

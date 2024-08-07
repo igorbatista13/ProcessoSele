@@ -64,9 +64,18 @@
                                                         </b>
                                                         {{ $editais->data_fim }}</span>
                                                 </li>
-                                                <li class="my-3">                      
-                                                    {{-- Aqui haverá um foreach com os documentos referente ao edital                             --}}
-                                                        {{ $editais->anexo1 }}                                                        
+                                                <li class="my-3">
+                                                    Edital: {{ $editais->anexo1 }}
+                                                    <a class="btn btn-primary"
+                                                        href="{{ asset('/storage/app/' . $editais->anexo1) }}"
+                                                        target="_blank">
+                                                        <i class="bi bi-file-earmark-pdf-fill">
+                                                        </i> Ver arquivo-OK
+                                                    </a>
+
+                                                </li>
+                                                <li class="my-3">
+                                                    Documentos: {{ $editais->anexo1 }}
                                                 </li>
 
                                             </ul>
@@ -100,7 +109,9 @@
                                                                     @auth
                                                                         @if ($userProfile && $userProfile->isComplete())
                                                                             <button type="submit"
-                                                                                class="btn btn-success text-white">  <i class="icon-pencil mr-2 text-white"></i> INSCREVA-SE </button>
+                                                                                class="btn btn-success text-white"> <i
+                                                                                    class="icon-pencil mr-2 text-white"></i>
+                                                                                INSCREVA-SE </button>
                                                                         @else
                                                                             <a href="{{ '/perfil' }}">
                                                                                 <button type="button"
@@ -116,16 +127,8 @@
                                                                 </form>
                                                             @endif
                                                         @endif
-
-
-
                                                     </span>
                                                 </li>
-
-
-
-
-
                                             </ul>
                                         </div>
                                     </div>

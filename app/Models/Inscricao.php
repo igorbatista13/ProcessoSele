@@ -24,4 +24,9 @@ class Inscricao extends Model implements AuditableContract
     {
         return $this->belongsTo(Vaga::class);
     }
+
+    public function formulario()
+    {
+        return $this->hasOne(RespInsc::class, 'inscricaos_id');
+    }
 }

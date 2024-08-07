@@ -117,11 +117,7 @@
                                 class="hide-menu">Configurações</span></a></li>
 
 
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/suporte') }}"
-                            aria-expanded="false"><i data-feather="coffee" class="feather-icon"></i><span
-                                class="hide-menu">Suporte</span></a></li>
-
-
+                
 
 
 
@@ -135,7 +131,13 @@
                                 class="hide-menu">Agenda</span></a></li>
 
                     <li class="list-divider"></li>
-                 <li class="nav-small-cap"><span class="hide-menu">Components</span></li>
+
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ asset('/suporte') }}"
+                        aria-expanded="false"><i data-feather="coffee" class="feather-icon"></i><span
+                            class="hide-menu">Suporte</span></a></li>
+
+
+                 {{-- <li class="nav-small-cap"><span class="hide-menu">Components</span></li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                         aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                             class="hide-menu">Forms </span></a>
@@ -322,11 +324,11 @@
                 <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="../../docs/docs.html"
                         aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span
-                            class="hide-menu">Documentation</span></a></li> --}}
+                            class="hide-menu">Documentation</span></a></li> 
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#" aria-expanded="false"><i
                                 data-feather="log-out" class="feather-icon"></i><span
                                 class="hide-menu">Suporte</span></a>
-                    </li>
+                    </li> --}}
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#"
                             aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
                                 class="hide-menu">Sair</span></a>

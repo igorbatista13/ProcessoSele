@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Inscricao;
 use App\Models\Vaga;
 use App\Models\Formulario;
+use App\Models\RespInsc;
 use App\Models\Resposta;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -38,84 +39,59 @@ class InscricaoController extends Controller
 
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
-        return view('paginas.inscricao.index', compact('inscricao',
-        'countInscricao', 'countInscricaoPendente', 'countInscricaoAprovadas', 'countInscricaoNaoAprovadas'
-    ));
+        $inscricoes = Inscricao::with('formulario')->get();
+
+        return view('paginas.inscricao.index', compact(
+            'inscricao',
+            'countInscricao',
+            'countInscricaoPendente',
+            'countInscricaoAprovadas',
+            'countInscricaoNaoAprovadas',
+            'inscricoes'
+        ));
     }
 
-        public function edit($id)
-        {
-            $inscricao = Inscricao::findOrFail($id);
-            return view('paginas.inscricao.edit', compact('inscricao'));
-        }
-    
+    public function edit($id)
+    {
+        $inscricao = Inscricao::findOrFail($id);
+        $inscricoes = Inscricao::with('formulario')->get();
 
-        public function store(Request $request, $id)
-        {
-            // $request->validate([
-            //     'nome' => 'required|string|max:255',
-            //     'cpf' => 'required|string|max:14',
-            //     // Adicione outras validações necessárias
-            // ]);
-        
-            // $formulario = new Formulario();
-            // $formulario->user_id = Auth::id();
-            // $formulario->vaga_id = $id;
-            // $formulario->nome = $request->nome;
-            // $formulario->cpf = $request->cpf;
-            // $formulario->save();
-        
-            $inscricao = new Inscricao();
-            $inscricao->user_id = Auth::id();
-            $inscricao->vaga_id = $id;
-            $inscricao->motivo = ''; // Defina um valor padrão ou remova se não for necessário
-            $inscricao->status = '';
-            $inscricao->save();
-        
-            // // Salvar respostas para questões da página 1
-            // foreach ($request->except(['nome', 'cpf', 'motivo', '_token']) as $key => $value) {
-            //     if (strpos($key, 'questao_pagina1_') === 0) {
-            //         $questaoId = substr($key, 16); // Tamanho de 'questao_pagina1_'
-        
-            //         // Verifique se a questão existe na tabela QuestaoPagina1
-            //         $questao = QuestaoPagina1::find($questaoId);
-            //         if ($questao) {
-            //             Resposta::create([
-            //                 'inscricaos_id' => $inscricao->id,
-            //                 'questoes_id' => $questaoId,
-            //                 'resposta' => $value,
-            //             ]);
-            //         } else {
-            //             return redirect()->back()->with('error', 'Questão da página 1 não encontrada.');
-            //         }
-            //     }
-            // }
-        
-            // // Salvar respostas para questões da página 2
-            // foreach ($request->except(['nome', 'cpf', 'motivo', '_token']) as $key => $value) {
-            //     if (strpos($key, 'questao_pagina2_') === 0) {
-            //         $questaoId = substr($key, 16); // Tamanho de 'questao_pagina2_'
-        
-            //         // Verifique se a questão existe na tabela QuestaoPagina2
-            //         $questao = QuestaoPagina2::find($questaoId);
-            //         if ($questao) {
-            //             Resposta::create([
-            //                 'inscricaos_id' => $inscricao->id,
-            //                 'questoes_id' => $questaoId,
-            //                 'resposta' => $value,
-            //             ]);
-            //         } else {
-            //             return redirect()->back()->with('error', 'Questão da página 2 não encontrada.');
-            //         }
-            //     }
-            // }
-        
-            // Enviar email de confirmação (opcional)
-            Mail::to(Auth::user()->email)->send(new \App\Mail\InscricaoRealizada($inscricao));
-        
-            return redirect()->route('minhas-inscricoes')->with('success', 'Inscrição realizada com sucesso!');
+        return view('paginas.inscricao.edit', compact('inscricao','inscricoes'));
+    }
+
+
+    public function store(Request $request, $id)
+    {
+        // Criação de uma nova inscrição
+        $inscricao = new Inscricao();
+        $inscricao->user_id = Auth::id();
+        $inscricao->vaga_id = $id;
+        $inscricao->motivo = ''; // Defina um valor padrão ou remova se não for necessário
+        $inscricao->status = '';
+        $inscricao->save();
+
+        // Criação de uma nova resposta de inscrição
+        $formulario = new RespInsc();
+        $formulario->inscricaos_id = $inscricao->id; // Correção: uso do ID da inscrição criada
+        $formulario->bancodetalentos = $request->bancodetalentos;
+        // Processamento do upload do arquivo
+        if ($request->hasFile('anexo')) {
+            $file = $request->file('anexo');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('anexos', $fileName, 'public');
+            $formulario->anexo = $filePath; // Salva o caminho do arquivo
         }
-        
+        $formulario->areadisciplina = $request->areadisciplina;
+        $formulario->outros = $request->outros;
+        $formulario->save();
+
+        // Envio de e-mail de notificação
+        Mail::to(Auth::user()->email)->send(new \App\Mail\InscricaoRealizada($inscricao));
+
+        // Redireciona para a rota 'minhas-inscricoes' com uma mensagem de sucesso
+        return redirect()->route('minhas-inscricoes')->with('success', 'Inscrição realizada com sucesso!');
+    }
+
 
 
 
@@ -127,6 +103,5 @@ class InscricaoController extends Controller
         $userInscriptions = Inscricao::where('user_id', Auth::id())->pluck('vaga_id')->toArray();
 
         return view('paginas.inscricao.minhasInscricoes', compact('inscricao', 'userInscriptions'));
-        
     }
 }

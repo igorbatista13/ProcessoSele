@@ -56,8 +56,9 @@
                                                     @foreach ($modeloformulario as $modeloformularios)
                                                             class="form-control">
                                                             <option value="{{ $modeloformularios->id }}">
-                                                                {{ $modeloformularios->nome }}</option> @endforeach
-                                                    </select>
+                                                                {{ $modeloformularios->nome }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-lg-2">
 

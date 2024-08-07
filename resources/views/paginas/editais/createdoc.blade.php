@@ -32,7 +32,7 @@
                         <input type="text" name="nome" id="nome" class="form-control" value="{{ $data->nome }}">
                     </div>
                 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="data_inicio">Data Início</label>
                         <input type="date" name="data_inicio" id="data_inicio" class="form-control" value="{{ $data->data_inicio }}" required>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label for="data_fim">Data Fim</label>
                         <input type="date" name="data_fim" id="data_fim" class="form-control" value="{{ $data->data_fim }}" required>
-                    </div>
+                    </div> --}}
                 
                     <div class="form-group">
                         <label for="anexo">Anexo</label>

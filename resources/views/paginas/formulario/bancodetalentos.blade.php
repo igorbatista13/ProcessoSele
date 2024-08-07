@@ -4,11 +4,11 @@
         <div class="form-group">
             <label for="bancodetalentos">Servidor está inscrito no <b> Banco de Talentos?</b>
             </label>
-            <input type="checkbox" class="form-control" id="bancodetalentos" name="bancodetalentos">
-            <label for="bancodetalentos">SIM</label>
-            <input type="checkbox" class="form-control" id="bancodetalentos" name="bancodetalentos">
+            <input type="radio" class="form-control" id="bancodetalentos" name="bancodetalentos" value="SIM">
+            <label for="bancodetalentos_sim">SIM</label>
 
-            <label for="bancodetalentos">NÃO</label>
+            <input type="radio" class="form-control" id="bancodetalentos" name="bancodetalentos" value="NAO">
+            <label for="bancodetalentos_nao">NÃO</label>
         </div>
     </div>
 </div>

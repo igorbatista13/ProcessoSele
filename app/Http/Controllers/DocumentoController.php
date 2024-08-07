@@ -27,15 +27,15 @@ class DocumentoController extends Controller
             'vagas_id' => 'required|exists:vagas,id',
             'tipo_arquivo' => 'required|string',
             'nome' => 'required|string|max:255',
-            'data_inicio' => 'required|date',
-            'data_fim' => 'required|date|after_or_equal:data_inicio',
+            // 'data_inicio' => 'required|date',
+            // 'data_fim' => 'required|date|after_or_equal:data_inicio',
             'anexo' => 'nullable|file|mimes:pdf,xlsx,docx,doc',
         ]);
 
         // Processa o upload do anexo, se fornecido
         $anexoPath = null;
         if ($request->hasFile('anexo')) {
-            $anexoPath = $request->file('anexo')->store('public/anexos');
+            $anexoPath = $request->file('anexo')->store('anexos','public');
         }
 
         // Cria um novo documento
@@ -43,8 +43,8 @@ class DocumentoController extends Controller
             'vagas_id' => $request->input('vagas_id'),
             'tipo_arquivo' => $request->input('tipo_arquivo'),
             'nome' => $request->input('nome'),
-            'data_inicio' => $request->input('data_inicio'),
-            'data_fim' => $request->input('data_fim'),
+            // 'data_inicio' => $request->input('data_inicio'),
+            // 'data_fim' => $request->input('data_fim'),
             'anexo' => $anexoPath, // Salva o caminho do anexo se existir
         ]);
         return back()->with('success', 'Documento atualizado com sucesso!');
@@ -57,8 +57,8 @@ class DocumentoController extends Controller
             'vagas_id' => 'required|exists:vagas,id',
             'tipo_arquivo' => 'required|string',
             'nome' => 'required|string|max:255',
-            'data_inicio' => 'required|date',
-            'data_fim' => 'required|date|after_or_equal:data_inicio',
+            // 'data_inicio' => 'required|date',
+            // 'data_fim' => 'required|date|after_or_equal:data_inicio',
             'anexo' => 'nullable|file|mimes:pdf,xlsx,docx,doc',
         ]);
 
@@ -69,14 +69,14 @@ class DocumentoController extends Controller
                 'vagas_id' => $request->input('vagas_id'),
                 'tipo_arquivo' => $request->input('tipo_arquivo'),
                 'nome' => $request->input('nome'),
-                'data_inicio' => $request->input('data_inicio'),
-                'data_fim' => $request->input('data_fim'),
+                // 'data_inicio' => $request->input('data_inicio'),
+                // 'data_fim' => $request->input('data_fim'),
             ]
         );
 
         // Verifica se há um arquivo anexo e faz o upload
         if ($request->hasFile('anexo')) {
-            $path = $request->file('anexo')->store('public/anexos');
+            $path = $request->file('anexo')->store('anexos','public');
             $documento->anexo = $path;
             $documento->save();
         }

@@ -87,7 +87,7 @@ class EditalController extends Controller
             $path = $request->file('anexo1')->store('anexos');
             $editais->anexo1 = $path;
         }
-
+    //    dd('$editais');
         $editais->save();
 
         return back();
@@ -107,9 +107,7 @@ class EditalController extends Controller
             'perfil' => 'required',
             'descricao' => 'required',
             'image' => 'nullable|image',
-            'anexo1' => 'nullable|file',
-            'data_inicio' => 'required|date',
-            'data_fim' => 'required|date',
+            'anexo1' => 'nullable|file',           
             'status' => 'required',
         ]);
     
@@ -123,7 +121,8 @@ class EditalController extends Controller
         if ($request->hasFile('anexo1')) {
             $editais->anexo1 = $request->file('anexo1')->store('anexos');
         }
-    
+        
+      //  dd($editais);
         $editais->save();
     
         return back()->with('success', 'Edital atualizado com sucesso!');

@@ -3,7 +3,7 @@
     <div class="step-content">
         <div class="form-group">
             <label for="area">Anexar em arquivo PDF único documento(os), confome o Edital N° <big> {{$vaga->id}} </big></label>
-            <input type="file" class="form-control" id="anexo" name="anexo">
-          </div>
+            <input type="file" class="form-control" id="anexo" name="anexo" accept=".pdf">
+        </div>
     </div>
 </div>
